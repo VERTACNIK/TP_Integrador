@@ -5,8 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
-    <script src="assets/js/script.js" defer></script>
     <title>Integrador</title>
+    <!-- <script src="assets/js/script.js" defer></script> -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            localStorage.setItem("goPag", "principal");
+            let cindex = 0;
+            let cimg = document.querySelectorAll(".cImg");
+            let ctxt = document.querySelectorAll(".cTxt");
+            cimg[0].classList.add("show");
+            ctxt[0].classList.add("show");
+            setInterval(() => {
+                cimg[cindex].classList.remove("show");
+                ctxt[cindex].classList.remove("show");
+                cindex = (cindex + 1) % cimg.length;
+                cimg[cindex].classList.add("show");
+                ctxt[cindex].classList.add("show");
+            }, 5000);
+        });
+    </script>
 </head>
 
 <body>
@@ -23,7 +40,30 @@
         </div>
     </header>
     <main>
-        <div class="carrusel"></div>
+        <!-- CARRUSEL -->
+        <div class="carrusel">
+            <a href="">
+                <!-- DATOS1 -->
+                <img class="cImg" src="./assets/img/icono.png">
+                <div class="cTxt">
+                    <h2>TEXTO 1</h2>
+                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
+                </div>
+                <!-- DATOS2 -->
+                <img class="cImg" src="./assets/img/icono.png">
+                <div class="cTxt">
+                    <h2>TEXTO 2</h2>
+                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
+                </div>
+                <!-- DATOS3 -->
+                <img class="cImg" src="./assets/img/icono.png">
+                <div class="cTxt">
+                    <h2>TEXTO 3</h2>
+                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
+                </div>
+            </a>
+        </div>
+        <!-- TARJETAS -->
         <div class="feed">
             <a href="" class="tarjeta">
                 <div class="tarjeta-contenido">
