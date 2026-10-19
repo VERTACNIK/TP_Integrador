@@ -8,21 +8,28 @@
     <title>Integrador</title>
     <!-- <script src="assets/js/script.js" defer></script> -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            localStorage.setItem("goPag", "principal");
-            let cindex = 0;
-            let cimg = document.querySelectorAll(".cImg");
-            let ctxt = document.querySelectorAll(".cTxt");
+        let cindex = 0;
+        let cimg;
+        let ctxt;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            cimg = document.querySelectorAll(".cImg");
+            ctxt = document.querySelectorAll(".cTxt");
             cimg[0].classList.add("show");
             ctxt[0].classList.add("show");
-            setInterval(() => {
-                cimg[cindex].classList.remove("show");
-                ctxt[cindex].classList.remove("show");
-                cindex = (cindex + 1) % cimg.length;
-                cimg[cindex].classList.add("show");
-                ctxt[cindex].classList.add("show");
-            }, 5000);
-        });
+            setInterval(changeClasses, 5000);
+        }
+
+        function changeClasses() {
+            cimg[cindex].classList.remove("show");
+            ctxt[cindex].classList.remove("show");
+            cindex++;
+            if (cindex >= cimg.length) {cindex = 0;}
+            cimg[cindex].classList.add("show");
+            ctxt[cindex].classList.add("show");
+        }
     </script>
 </head>
 
@@ -65,6 +72,7 @@
         </div>
         <!-- TARJETAS -->
         <div class="contDiv">
+            <!-- TARJETA1 -->
             <a href="">
                 <div>
                     <img src="./assets/img/icono.png">
@@ -74,6 +82,7 @@
                     </div>
                 </div>
             </a>
+             <!-- TARJETA2 -->
             <a href="">
                 <div>
                     <img src="./assets/img/icono.png">
@@ -83,6 +92,7 @@
                     </div>
                 </div>
             </a>
+             <!-- TARJETA3 -->
             <a href="">
                 <div>
                     <img src="./assets/img/icono.png">
@@ -92,6 +102,7 @@
                     </div>
                 </div>
             </a>
+             <!-- TARJETA4 -->
             <a href="">
                 <div>
                     <img src="./assets/img/icono.png">
@@ -101,6 +112,7 @@
                     </div>
                 </div>
             </a>
+             <!-- TARJETA5 -->
             <a href="">
                 <div>
                     <img src="./assets/img/icono.png">
