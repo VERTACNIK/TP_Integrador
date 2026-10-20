@@ -9,26 +9,68 @@
     <!-- <script src="assets/js/script.js" defer></script> -->
     <script>
         let cindex = 0;
+        let chref;
+        let ctrans;
         let cimg;
         let ctxt;
 
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
-            cimg = document.querySelectorAll(".cImg");
-            ctxt = document.querySelectorAll(".cTxt");
-            cimg[0].classList.add("show");
-            ctxt[0].classList.add("show");
-            setInterval(carrusel, 5000);
+            chref = document.getElementsByClassName("cHref");
+            ctrans = document.getElementsByClassName("cTransition");
+            cimg = document.getElementsByClassName("cImg");
+            ctxt = document.getElementsByClassName("cTxt");
+            carruselChange();
         }
 
-        function carrusel() {
-            cimg[cindex].classList.remove("show");
-            ctxt[cindex].classList.remove("show");
+        function carruselIndex() {
+            ctrans[0].classList.add("show");
             cindex++;
-            if (cindex >= cimg.length) {cindex = 0;}
-            cimg[cindex].classList.add("show");
-            ctxt[cindex].classList.add("show");
+            if (cindex >= 4) {cindex = 0;}
+            setTimeout(carruselChange, 1285);
+        }
+
+        function carruselChange() {
+            ctrans[0].classList.remove("show");
+
+            if (cindex == 0) {
+                chref[0].setAttribute("href", "pagina1.html");
+                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                ctxt[0].innerHTML = `
+                    <h2>Título de la primera noticia</h2>
+                    <h3>Descripción de la primera noticia</h3>
+                `;
+            }
+
+            if (cindex == 1) {
+                chref[0].setAttribute("href", "pagina2.html");
+                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                ctxt[0].innerHTML = `
+                    <h2>Título de la segunda noticia</h2>
+                    <h3>Descripción de la segunda noticia</h3>
+                `;
+            }
+
+            if (cindex == 2) {
+                chref[0].setAttribute("href", "pagina3.html");
+                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                ctxt[0].innerHTML = `
+                    <h2>Título de la tercera noticia</h2>
+                    <h3>Descripción de la tercera noticia</h3>
+                `;
+            }
+
+            if (cindex == 3) {
+                chref[0].setAttribute("href", "pagina4.html");
+                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                ctxt[0].innerHTML = `
+                    <h2>Título de la cuarta noticia</h2>
+                    <h3>Descripción de la cuarta noticia</h3>
+                `;
+            }
+
+            setTimeout(carruselIndex, 7000);
         }
     </script>
 </head>
@@ -40,33 +82,19 @@
                 alt="Logo de agujero negro con disco de acreeción espiralizado circundado por un anillo.">
         </div>
         <div>
-            <a #id="inicio" href="index.html">Inicio</a>
+            <a id="inicio" href="index.html">Inicio</a>
         </div>
         <div>
-            <a #id="noticias" href="noticias.html">Noticias</a>
+            <a id="noticias" href="noticias.html">Noticias</a>
         </div>
     </header>
     <main>
         <!-- CARRUSEL -->
         <div class="carrusel">
-            <a href="">
-                <!-- DATOS1 -->
+            <a class="cHref" href="">
+                <section class="cTransition"></section>
                 <img class="cImg" src="./assets/img/icono.png">
                 <div class="cTxt">
-                    <h2>TEXTO 1</h2>
-                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
-                </div>
-                <!-- DATOS2 -->
-                <img class="cImg" src="./assets/img/icono.png">
-                <div class="cTxt">
-                    <h2>TEXTO 2</h2>
-                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
-                </div>
-                <!-- DATOS3 -->
-                <img class="cImg" src="./assets/img/icono.png">
-                <div class="cTxt">
-                    <h2>TEXTO 3</h2>
-                    <h3>TEXTO DE PRUEBA ACA HAY INFOMRACION</h3>
                 </div>
             </a>
         </div>

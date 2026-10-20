@@ -12,6 +12,8 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
+    min-width: 550px;
+    min-height: 200vh;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -65,7 +67,7 @@ main {
     margin-right: auto;
 }
 
-.carrusel a {
+.cHref {
     color: black;
     text-decoration: none;
     width: 100%;
@@ -76,17 +78,25 @@ main {
     justify-content: end;
 }
 
+.cTransition {
+    background-color: black;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.3s ease;
+    position: absolute;
+}
+
+.cTransition.show {
+    opacity: 1;
+}
+
 .cImg {
     z-index: 1;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 2.5s ease;
     position: absolute;
-}
-
-.cImg.show {
-    opacity: 1;
 }
 
 .cTxt {
@@ -94,15 +104,9 @@ main {
     position: absolute;
     flex-direction: column;
     justify-content: end;
-    opacity: 0;
-    transition: opacity 2.5s ease;
     padding-left: 10px;
     padding-bottom: 10px;
     z-index: 2;
-}
-
-.cTxt.show {
-    opacity: 1;
 }
 
 .contDiv {
@@ -117,8 +121,9 @@ main {
 
 .contDiv a {
     text-decoration: none;
-    height: 200px;
+    height: auto;
     width: 200px;
+    aspect-ratio: 1 / 1;
     transition: height 0.3s ease, width 0.3s ease, filter 0.3s ease, font-size 0.3s ease;
     background-size: cover;
     background-position: center;
@@ -130,13 +135,14 @@ main {
     justify-content: flex-end;
     box-shadow: 0 4px 6px rgb(0, 0, 0, 0.3);
     color: black;
-    font-size: 0.9rem;
+    font-size: clamp(0.2rem, 2vw, 0.9rem);
 }
 
 .contDiv a:hover {
-    height: 220px;
+    height: auto;
     width: 220px;
-    font-size: 1rem;
+    aspect-ratio: 1 / 1;
+    font-size: clamp(0.3rem, 2vw, 1rem);
     filter: brightness(1.3);
 }
 
