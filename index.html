@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/img/home_isotipo.png">
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
-    <title>Integrador</title>
+    <title>AstroSpace</title>
     <!-- <script src="assets/js/script.js" defer></script> -->
     <script>
         let cindex = 0;
@@ -27,7 +28,7 @@
         function carruselIndex() {
             ctrans[0].classList.add("show");
             cindex++;
-            if (cindex >= 4) {cindex = 0;}
+            if (cindex >= 5) {cindex = 0;}
             setTimeout(carruselChange, 1285);
         }
 
@@ -36,41 +37,54 @@
 
             if (cindex == 0) {
                 chref[0].setAttribute("href", "pagina1.html");
-                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                cimg[0].setAttribute("src", "./assets/img/Carrusel-(El-sistema-solar).png");
                 ctxt[0].innerHTML = `
-                    <h2>Título de la primera noticia</h2>
-                    <h3>Descripción de la primera noticia</h3>
+                    <h2>🪐 El sistema solar</h2>
+                    <h3>conocé los planetas, el Sol, las lunas y otros cuerpos celestes que forman nuestro vecindario cósmico.</h3>
                 `;
             }
 
             if (cindex == 1) {
                 chref[0].setAttribute("href", "pagina2.html");
-                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Estrellas-y-galaxias).png");
                 ctxt[0].innerHTML = `
-                    <h2>Título de la segunda noticia</h2>
-                    <h3>Descripción de la segunda noticia</h3>
+                    <h2>⭐ Estrellas y galaxias</h2>
+                    <h3>descubrí las enormes estructuras que habitan el universo, cómo nacen las estrellas y qué secretos esconden las galaxias.</h3>
                 `;
             }
 
             if (cindex == 2) {
                 chref[0].setAttribute("href", "pagina3.html");
-                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Exploracion-espacial).png");
                 ctxt[0].innerHTML = `
-                    <h2>Título de la tercera noticia</h2>
-                    <h3>Descripción de la tercera noticia</h3>
+                    <h2>🚀 Exploración espacial</h2>
+                    <h3>acompañá a astronautas y sondas espaciales en sus misiones para explorar nuevos mundos y ampliar nuestros conocimientos.</h3>
                 `;
             }
 
             if (cindex == 3) {
                 chref[0].setAttribute("href", "pagina4.html");
-                cimg[0].setAttribute("src", "./assets/img/icono.png");
+                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Misterios-del-universo).png");
                 ctxt[0].innerHTML = `
-                    <h2>Título de la cuarta noticia</h2>
-                    <h3>Descripción de la cuarta noticia</h3>
+                    <h2>🕳️ Misterios del universo</h2>
+                    <h3>adentrate en los enigmas de los agujeros negros, la materia oscura y los orígenes del cosmos.</h3>
+                `;
+            }
+
+            if (cindex == 4) {
+                chref[0].setAttribute("href", "pagina4.html");
+                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Fenomenos-espaciales).png");
+                ctxt[0].innerHTML = `
+                    <h2>🌠 Fenómenos espaciales</h2>
+                    <h3>maravillate con las auroras, los eclipses, las supernovas y otros espectáculos naturales que ocurren en el espacio.</h3>
                 `;
             }
 
             setTimeout(carruselIndex, 7000);
+        }
+
+        function wScroll() {
+            window.scrollTo({top: 0, behavior: "smooth"});
         }
     </script>
 </head>
@@ -78,10 +92,12 @@
 <body>
     <header>
         <div>
-            <a href="index.html">
-                <img id="isotipo" src="assets/img/home_isotipo.png" alt="Logo de agujero negro con disco de acreeción espiralizado circundado por un anillo.">
-            </a>
-            <a id="inicio" href="index.html">INICIO</a>
+            <button class="bInvisible" onclick="wScroll()">
+                <img id="isotipo" src="assets/img/home_isotipo.png" alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+                AstroSpace
+            </button>
+        </div>
+        <div>
             <a id="noticias" href="noticias.html">NOTICIAS</a>
         </div>
         <div>
@@ -89,73 +105,283 @@
         </div>
     </header>
     <main>
+
+        <!-- TEXTO -->
+
         <div class="textDiv">
-            <div>
-                <h1>Bienvenido</h1>
-            </div>
-            <div>
-                <h2>Esto es un texto de ejemplo para una explicacion breve de que trata la página</h2>
-            </div>
+            <h1>🌌 ¡Bienvenido a AstroSpace!</h1>
+            <h2>Explorá los secretos del cosmos y descubrí todo lo que el espacio tiene para ofrecerte. Desde los planetas de nuestro sistema solar hasta los misterios más profundos del universo, te invitamos a embarcarte en un viaje lleno de descubrimientos.</h2>
         </div>
 
         <!-- CARRUSEL -->
+
         <div class="carrusel">
             <a class="cHref" href="">
+                <section class="cShader"></section>
                 <section class="cTransition"></section>
-                <img class="cImg" src="./assets/img/icono.png">
+                <img class="cImg" src="./assets/img/Carrusel-(El-sistema-solar).png">
                 <div class="cTxt">
                 </div>
             </a>
         </div>
+
         <!-- TARJETAS -->
+
+        <!-- El sistema solar -->
+        <section class="textSection">
+            <h1>🪐 El sistema solar</h1>
+        </section>
         <div class="contDiv">
-            <!-- TARJETA1 -->
             <a href="">
                 <div>
-                    <img src="./assets/img/icono.png">
+                    <img src="./assets/img/T-SL-(Los-planetas).png">
                     <div>
-                        <h3>Test eando</h3>
-                        <p>Brevísima descripcioneichon</p>
+                        <h3>Los planetas</h3>
+                        <h5>Ocho mundos que orbitan alrededor del Sol.</h5>
                     </div>
                 </div>
             </a>
-             <!-- TARJETA2 -->
             <a href="">
                 <div>
-                    <img src="./assets/img/icono.png">
+                    <img src="./assets/img/T-SL-(El-sol).png">
                     <div>
-                        <h3>Test eando</h3>
-                        <p>Brevísima descripcioneichon</p>
+                        <h3>El Sol</h3>
+                        <h5>La estrella que ilumina y calienta la Tierra.</h5>
                     </div>
                 </div>
             </a>
-             <!-- TARJETA3 -->
             <a href="">
                 <div>
-                    <img src="./assets/img/icono.png">
+                    <img src="./assets/img/T-SL-(La-luna).png">
                     <div>
-                        <h3>Test eando</h3>
-                        <p>Brevísima descripcioneichon</p>
+                        <h3>La Luna</h3>
+                        <h5>El satélite natural de nuestro planeta.</h5>
                     </div>
                 </div>
             </a>
-             <!-- TARJETA4 -->
             <a href="">
                 <div>
-                    <img src="./assets/img/icono.png">
+                    <img src="./assets/img/T-SL-(Los-asteroides).png">
                     <div>
-                        <h3>Test eando</h3>
-                        <p>Brevísima descripcioneichon</p>
+                        <h3>Los asteroides</h3>
+                        <h5>Cuerpos rocosos que orbitan alrededor del Sol.</h5>
                     </div>
                 </div>
             </a>
-             <!-- TARJETA5 -->
             <a href="">
                 <div>
-                    <img src="./assets/img/icono.png">
+                    <img src="./assets/img/T-SL-(Los-cometas).png">
                     <div>
-                        <h3>Test eando</h3>
-                        <p>Brevísima descripcioneichon</p>
+                        <h3>Los cometas</h3>
+                        <h5>Cuerpos de hielo y polvo que pueden formar colas brillantes.</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Estrellas y galaxias -->
+        <section class="textSection">
+            <h1>⭐ Estrellas y galaxias</h1>
+        </section>
+        <div class="contDiv">
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EG-(Las-nebulosas).png">
+                    <div>
+                        <h3>Las nebulosas</h3>
+                        <h5>Nubes de gas y polvo donde nacen estrellas.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EG-(La-Via-Lactea).png">
+                    <div>
+                        <h3>La Vía Láctea</h3>
+                        <h5>La galaxia donde vivimos</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EG-(Otras-galaxias).png">
+                    <div>
+                        <h3>Otras galaxias</h3>
+                        <h5>Enormes conjuntos de estrellas y materia.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EG-(ciclo-estrellas).png">
+                    <div>
+                        <h3>El ciclo de vida de las estrellas</h3>
+                        <h5>Cómo nacen, evolucionan y mueren.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EG-(estrellas-neutrones).png">
+                    <div>
+                        <h3>Las estrellas de neutrones</h3>
+                        <h5>Objetos extremadamente densos nacidos de estrellas masivas.</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Exploración espacial -->
+        <section class="textSection">
+            <h1>🚀 Exploración espacial</h1>
+        </section>
+        <div class="contDiv">
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EE-(Los-astronautas).png">
+                    <div>
+                        <h3>Los astronautas</h3>
+                        <h5>Personas que viajan al espacio para investigar.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EE-(Cohetes-espaciales).png">
+                    <div>
+                        <h3>Los cohetes espaciales</h3>
+                        <h5>Vehículos que permiten viajar más allá de la Tierra.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EE-(Estacion-Espacial).png">
+                    <div>
+                        <h3>La Estación Espacial Internacional</h3>
+                        <h5>Un laboratorio científico en órbita.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EE-(Llegada-a-la-Luna).png">
+                    <div>
+                        <h3>La llegada a la Luna</h3>
+                        <h5>El histórico primer alunizaje tripulado de 1969.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-EE-(Robots-exploradores).png">
+                    <div>
+                        <h3>Los robots exploradores</h3>
+                        <h5>Máquinas que investigan otros mundos.</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Misterios del universo -->
+        <section class="textSection">
+            <h1>🕳️ Misterios del universo</h1>
+        </section>
+        <div class="contDiv">
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-MU-(Agujeros-negros).png">
+                    <div>
+                        <h3>Los agujeros negros</h3>
+                        <h5>Regiones con una gravedad extremadamente intensa.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-MU-(Big-Bang).png">
+                    <div>
+                        <h3>El Big Bang</h3>
+                        <h5>El modelo que explica la evolución inicial del universo.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-MU-(Materia-oscura).png">
+                    <div>
+                        <h3>La materia oscura</h3>
+                        <h5>Materia invisible que detectamos por sus efectos gravitatorios.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-MU-(Vida-extraterrestre).png">
+                    <div>
+                        <h3>La vida extraterrestre</h3>
+                        <h5>La búsqueda de vida más allá de la Tierra.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-MU-(Tam-universo).png">
+                    <div>
+                        <h3>El tamaño del universo</h3>
+                        <h5>La inmensidad del cosmos y sus límites desconocidos.</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Fenómenos espaciales -->
+        <section class="textSection">
+            <h1>🌠 Fenómenos espaciales</h1>
+        </section>
+        <div class="contDiv">
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-FE-(Auroras-polares).png">
+                    <div>
+                        <h3>Las auroras polares</h3>
+                        <h5>Luces de colores producidas por partículas solares.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-FE-(Eclipses-solares).png">
+                    <div>
+                        <h3>Los eclipses solares</h3>
+                        <h5>La Luna oculta total o parcialmente el Sol.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-FE-(Lluvias-meteoros).png">
+                    <div>
+                        <h3>Las lluvias de meteoros</h3>
+                        <h5>Destellos luminosos causados por partículas que entran en la atmósfera.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-FE-(Supernovas).png">
+                    <div>
+                        <h3>Las supernovas</h3>
+                        <h5>Explosiones extremadamente energéticas de estrellas.</h5>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="./assets/img/T-FE-(Tormentas-solares).png">
+                    <div>
+                        <h3>Las tormentas solares</h3>
+                        <h5>Fenómenos solares que pueden afectar la tecnología terrestre.</h5>
                     </div>
                 </div>
             </a>
@@ -165,19 +391,20 @@
         <div>
             <h3>Derechos de autor</h3>
             <p>
-                X
+                El contenido de este sitio tiene fines educativos e informativos.
+                Las imágenes y los recursos de terceros pertenecen a sus respectivos autores.
             </p>
         </div>
         <div>
             <h3>Información del sitio</h3>
-            <p>Creadores: X X</p>
-            <p>Correos: X X</p>
-            <p>Contactos: X</p>
-            <p>© Pagina</p>
+            <p>Autores: Axel Vertacnik y Nicolás Costantini</p>
+            <p>Correos: vertacnikaxellautaro@gmail.com</p>
+            <p>Contacto: nico.cost96@gmail.com</p>
+            <p>Proyecto educativo sobre el espacio y el universo.</p>
         </div>
         <div>
             <h3>Copyright</h3>
-            <p>© X. Todos los derechos reservados.</p>
+            <p>© 2026 AstroSpace. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
