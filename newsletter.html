@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <title>Integrador</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <button class="bInvisible" onclick="wScroll()">
+                <img id="isotipo" src="assets/img/home_isotipo.png" alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+                AstroSpace
+                <a href="index.html"></a>
+            </button>
+        </div>
+        <div>
+            <a id="noticias" href="noticias.html">Noticias</a>
+        </div>
+        <div>
+            <a href="newsletter.html">Newsletter</a>
+        </div>
+    </header>
+    <main>
+        <div id="newsletter-container">
+            <div id="newsletter-head">
+                <h1>Newsletter</h1>
+                <p>Recibe las últimas novedades, al igual que un resumen semanal todos los sábados con las noticias
+                    espaciales más relevantes y comunicados importantes.</p>
+            </div>
+            <div id="newsletter-content">
+                <form id="newsletter" method="post">
+                    <div>
+                        <label for="fname">Nombre</label>
+                        <input type="text" id="fname" name="fname_user" value="Santiago" autocomplete="given-name">
+                    </div>
+                    <div>
+                        <label for="lname">Apellido</label>
+                        <input type="text" id="lname" name="lname_user" value="Rodriguez" autocomplete="family-name">
+                    </div>
+                    <div>
+                        <label for="gender">Género</label>
+                        <select id="gender" name="gender_user" autocomplete="sex">
+                            <option value="">Selecciona una opción</option>
+                            <option value="male">Masculino</option>
+                            <option value="female">Femenino</option>
+                            <option value="other">Otro / Prefiero no decirlo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email_user" value="ejemplo@gmail.com" autocomplete="email">
+                    </div>
+                    <div>
+                        <label for="fnac">Fecha de nacimiento</label>
+                        <input type="date" id="fnac" name="bday_user"><br>
+                    </div>
+                    <div>
+                        <input type="submit" value="Registrarme">
+                    </div>
+                </form>
+            </div>
+            <div id="newsletter-foot">
+                <p>Tus datos personales serán tratados conforme a la <strong>Ley Nº 25.326 de Protección de Datos
+                        Personales</strong>.
+                    Podrás ejercer tus derechos de acceso, rectificación y supresión en cualquier momento.
+                    <em>"El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los
+                        mismos en forma gratuita a intervalos no inferiores a seis meses..."</em>
+                    (Ley 25.326, Art. 14, Inc. 1).
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <h3>Derechos de autor</h3>
+            <p>
+                El contenido de este sitio tiene fines educativos e informativos.
+                Las imágenes y los recursos de terceros pertenecen a sus respectivos autores.
+            </p>
+        </div>
+        <div>
+            <h3>Información del sitio</h3>
+            <p>Autores: Axel Vertacnik y Nicolás Costantini</p>
+            <p>Correos: vertacnikaxellautaro@gmail.com</p>
+            <p>Contacto: nico.cost96@gmail.com</p>
+            <p>Proyecto educativo sobre el espacio y el universo.</p>
+        </div>
+        <div>
+            <h3>Copyright</h3>
+            <p>© 2026 AstroSpace. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        const formulario = document.querySelector("#newsletter");
+        const nombre = document.getElementById("fname");
+        const apellido = document.getElementById("lname");
+        const genero = document.getElementById("gender");
+        const email = document.getElementById("email");
+
+
+        formulario.addEventListener("submit", (ev) => {
+            
+
+
+
+        });
+    </script>
+</body>
+
+</html>
