@@ -1,9 +1,20 @@
-* {
+/* << OTRO >> */
+
+* { /* (COLOCAR UN ESTILO A TODOS LOS TEXTOS) */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.bInvisible { /* (HACER UN BOTON INVISIBLE) */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+/* << BODY >> */
 
 body {
     background-image: url(../img/body_background.jpg);
@@ -18,7 +29,9 @@ body {
     justify-content: space-between;
 }
 
-#isotipo {
+/* << HEADER >> */
+
+#isotipo { /* (LOGO EN LA BARRA) */
     padding-top: 5px;
     width: 78px;
 }
@@ -49,31 +62,24 @@ header div {
     height: 100%;
 }
 
-header div * {
+header div * { /* (CUALQUIER TEXTO EN EL DIV) */
     color: rgb(255, 255, 255);
     transition: color 0.2s ease;
     text-decoration: none;
 }
 
-header div *:hover {
+header div *:hover { /* (AL SELECCIONAR CUALQUIER TEXTO EN EL DIV) */
     color: rgb(252, 252, 179);
 }
 
-.bInvisible {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-}
+/* << MAIN >> */
 
 main {
     padding-top: 70px;
     flex: 1;
-    padding-bottom: 70px;
 }
 
-.textDiv {
+.textDiv { /* (DIV QUE CONTIENE EL TEXTO DEL MAIN) */
     color: white;
     width: 100%;
     text-align: center;
@@ -85,13 +91,13 @@ main {
     gap: 20px;
 }
 
-.textDiv * {
+.textDiv * { /* (TEXTO DENTRO DEL DIV) */
     background-color:  rgba(3, 4, 7, 0.6);
     width: 100%;
     padding: 0px 15%;
 }
 
-.carrusel {
+.carrusel { /* (DIV DEL CARRUSEL) */
     background-color:  rgba(3, 4, 7, 0.6);
     padding: 0px 10%;
     display: flex;
@@ -100,7 +106,7 @@ main {
     margin-right: auto;
 }
 
-.cHref {
+.cHref { /* ("A" DEL CARRUSEL) */
     color: rgb(255, 255, 255);
     text-decoration: none;
     text-shadow: 5px 5px 4px black;
@@ -113,12 +119,12 @@ main {
     justify-content: end;
 }
 
-.cHref:hover {
+.cHref:hover { /* (EFECTO AL TOCAR EL CARRUSEL) */
     height: 50vh;
     filter: brightness(1.3);
 }
 
-.cTransition {
+.cTransition { /* (TRANSICION DEL CAMBIO DE IMAGENES DEL CARRUSEL) */
     background-color: black;
     z-index: 5;
     width: 100%;
@@ -128,11 +134,11 @@ main {
     position: absolute;
 }
 
-.cTransition.show {
+.cTransition.show { /* (MOSTRAR EL EFECTO DE TRANSICION DEL CARRUSEL) */
     opacity: 1;
 }
 
-.cShader {
+.cShader { /* (SOMBRA DE LA IMAGEN DENTRO DEL CARRUSEL) */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
     z-index: 3;
     width: 100%;
@@ -140,7 +146,7 @@ main {
     position: absolute;
 }
 
-.cImg {
+.cImg { /* (IMAGEN DEL CARRUSEL) */
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -148,7 +154,7 @@ main {
     object-position: center;
 }
 
-.cTxt {
+.cTxt { /* (DIV DEL TEXTO EN EL CARRUSEL) */
     display: flex;
     position: absolute;
     flex-direction: column;
@@ -160,11 +166,11 @@ main {
     z-index: 4;
 }
 
-.cTxt * {
+.cTxt * { /* (CAMBIAR EL FONT DENTRO DEL DIV QUE CONTIENE EL TEXTO EN EL CARRUSEL) */
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.textSection {
+.textSection { /* (SECCION TITULAR DE LAS TARJETAS) */
     color: white;
     text-align: center;
     text-shadow: 5px 5px 4px black;
@@ -174,13 +180,13 @@ main {
     padding-bottom: 10px;
 }
 
-.textSection * {
+.textSection * { /* (FRANJA DEL TEXTO TITULAR DE LAS TARJETAS) */
     padding: 0px 14px 6px 10px;
     background-color:  rgba(3, 4, 7, 0.6);
     border-radius: 20px;
 }
 
-.contDiv {
+.contDiv { /* (DIV DE LAS TARJETAS) */
     background-color:  rgba(3, 4, 7, 0.6);
     display: flex;
     flex-direction: row;
@@ -190,7 +196,7 @@ main {
     padding: 20px;
 }
 
-.contDiv a {
+.contDiv a { /* ("A" DE LAS TARJETAS) */
     text-decoration: none;
     height: auto;
     width: 200px;
@@ -209,7 +215,7 @@ main {
     font-size: clamp(0.2rem, 2vw, 0.9rem);
 }
 
-.contDiv a:hover {
+.contDiv a:hover { /* (EFECTO AL SELECCIONAR UNA TARJETA) */
     height: auto;
     width: 220px;
     aspect-ratio: 1 / 1;
@@ -217,7 +223,7 @@ main {
     filter: brightness(1.3);
 }
 
-.contDiv a div {
+.contDiv a div { /* (SOMBRA EN LA IMAGEN DEL LAS TARJETAS) */
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -227,7 +233,7 @@ main {
     flex-direction: column;
 }
 
-.contDiv a div img {
+.contDiv a div img { /* (IMAGEN DEL LAS TARJETAS) */
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -235,7 +241,7 @@ main {
     object-position: left;
 }
 
-.contDiv a div div {
+.contDiv a div div { /* (DIV DEL TEXTO DE LA TARJETA) */
     z-index: 2;
     height: 100%;
     padding: 15px;
@@ -244,14 +250,14 @@ main {
     justify-content: end;
 }
 
-.contDiv a div div * {
+.contDiv a div div * { /* (TEXTO DE LA TARJETA) */
     font-size: 90%;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: 5px 5px 4px black;
 }
 
-.contDiv a div div h5 {
+.contDiv a div div h5 { /* (TEXTO DE LA TARJETA QUE NO ES TITULAR) */
     font-weight: inherit;
 }
 
@@ -308,6 +314,62 @@ main {
 #newsletter input:hover, #newsletter select:hover {
     background-color: rgb(252, 252, 159);
 }
+
+/* << CUENTA >> */ 
+
+.account {
+    color: white;
+    background-color: rgba(26, 33, 43, 0.1);
+    width: 100%;
+    margin: 30px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.account form {
+    background-color: rgba(26, 33, 43, 0.247);
+    font-weight: bold;
+    font-size: 20px;
+    height: 100%;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-content: center; /* -- organiza todo en el centro de la caja de forma vertical -- */
+}
+
+.account form section {
+    background-color: rgb(50, 92, 109);
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account form div {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.account form div input {
+    width: 240px;
+}
+
+#accountButtom {
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.account form div button {
+    width: 100%;
+    height: 24px;
+}
+
+/* << FOOTER >> */
 
 footer {
     background-color: rgb(15, 17, 22);
