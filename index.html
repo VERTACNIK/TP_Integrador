@@ -6,102 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/img/home_isotipo.png">
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <script src="assets/js/script.js" defer></script>
     <title>AstroSpace</title>
-    <!-- <script src="assets/js/script.js" defer></script> -->
-    <script>
-        let cindex = 0;
-        let chref;
-        let ctrans;
-        let cimg;
-        let ctxt;
-
-        document.addEventListener("DOMContentLoaded", start);
-
-        function start() {
-            chref = document.getElementsByClassName("cHref");
-            ctrans = document.getElementsByClassName("cTransition");
-            cimg = document.getElementsByClassName("cImg");
-            ctxt = document.getElementsByClassName("cTxt");
-            carruselChange();
-        }
-
-        function carruselIndex() {
-            ctrans[0].classList.add("show");
-            cindex++;
-            if (cindex >= 5) {cindex = 0;}
-            setTimeout(carruselChange, 1285);
-        }
-
-        function carruselChange() {
-            ctrans[0].classList.remove("show");
-
-            if (cindex == 0) {
-                chref[0].setAttribute("href", "pagina1.html");
-                cimg[0].setAttribute("src", "./assets/img/Carrusel-(El-sistema-solar).png");
-                ctxt[0].innerHTML = `
-                    <h2>🪐 El sistema solar</h2>
-                    <h3>conocé los planetas, el Sol, las lunas y otros cuerpos celestes que forman nuestro vecindario cósmico.</h3>
-                `;
-            }
-
-            if (cindex == 1) {
-                chref[0].setAttribute("href", "pagina2.html");
-                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Estrellas-y-galaxias).png");
-                ctxt[0].innerHTML = `
-                    <h2>⭐ Estrellas y galaxias</h2>
-                    <h3>descubrí las enormes estructuras que habitan el universo, cómo nacen las estrellas y qué secretos esconden las galaxias.</h3>
-                `;
-            }
-
-            if (cindex == 2) {
-                chref[0].setAttribute("href", "pagina3.html");
-                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Exploracion-espacial).png");
-                ctxt[0].innerHTML = `
-                    <h2>🚀 Exploración espacial</h2>
-                    <h3>acompañá a astronautas y sondas espaciales en sus misiones para explorar nuevos mundos y ampliar nuestros conocimientos.</h3>
-                `;
-            }
-
-            if (cindex == 3) {
-                chref[0].setAttribute("href", "pagina4.html");
-                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Misterios-del-universo).png");
-                ctxt[0].innerHTML = `
-                    <h2>🕳️ Misterios del universo</h2>
-                    <h3>adentrate en los enigmas de los agujeros negros, la materia oscura y los orígenes del cosmos.</h3>
-                `;
-            }
-
-            if (cindex == 4) {
-                chref[0].setAttribute("href", "pagina4.html");
-                cimg[0].setAttribute("src", "./assets/img/Carrusel-(Fenomenos-espaciales).png");
-                ctxt[0].innerHTML = `
-                    <h2>🌠 Fenómenos espaciales</h2>
-                    <h3>maravillate con las auroras, los eclipses, las supernovas y otros espectáculos naturales que ocurren en el espacio.</h3>
-                `;
-            }
-
-            setTimeout(carruselIndex, 7000);
-        }
-
-        function wScroll() {
-            window.scrollTo({top: 0, behavior: "smooth"});
-        }
-    </script>
 </head>
 
 <body>
     <header>
         <div>
-            <button class="bInvisible" onclick="wScroll()">
-                <img id="isotipo" src="assets/img/home_isotipo.png" alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
-                AstroSpace
-            </button>
+            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"  alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+                AstroSpace</a>
         </div>
         <div>
-            <a id="noticias" href="noticias.html">Noticias</a>
+            <a id="noticias-link" href="noticias.html">Noticias</a>
         </div>
         <div>
-            <a id="noticias" href="cuenta.html">CUENTA</a>
+            <a id="newsletter-link" href="newsletter.html">Newsletter</a>
+        </div>
+        <div>
+            <a id="cuenta-link" href="cuenta.html">Cuenta</a>
         </div>
     </header>
     <main>
