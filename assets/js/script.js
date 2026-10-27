@@ -4,6 +4,7 @@ const rutaActual = window.location.pathname;
 const homeLink = document.getElementById("home-link");
 const nltLink = document.getElementById("newsletter-link");
 const newsLink = document.getElementById("noticias-link")
+const accountLink = document.getElementById("account-link")
 
 homeLink.addEventListener('click', function (ev) {
     if (rutaActual.endsWith("index.html")) {
@@ -21,6 +22,13 @@ nltLink.addEventListener('click', function (ev) {
 
 newsLink.addEventListener('click', function (ev) {
     if (rutaActual.endsWith("noticias.html")) {
+        ev.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+});
+
+accountLink.addEventListener('click', function (ev) {
+    if (rutaActual.endsWith("cuenta.html")) {
         ev.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -368,14 +376,239 @@ if (rutaActual.endsWith("newsletter.html")) {
 
         });
     }
-
-
-
-
-
 }
 
+// fin script newsletter
 
+// script de cuenta
 
+if (rutaActual.endsWith("cuenta.html")) {
+    let page = "register";
+    let title;
+    let cUser;
+    let iUser;
+    let cEmail;
+    let iEmail;
+    let cPassword;
+    let iPassword;
+    let cPhone;
+    let iPhone;
+    let txtBtnLeft;
+    let txtBtnRight;
 
+    window.addEventListener("beforeunload", end);
 
+    function end() {
+        localStorage.setItem("account_page", page);
+    }
+
+    document.addEventListener("DOMContentLoaded", start);
+
+    function start() {
+        title = document.getElementById("accountTitle");
+        cUser = document.getElementById("contUser");
+        iUser = document.getElementById("inputUser");
+        cEmail = document.getElementById("contEmail");
+        iEmail = document.getElementById("inputEmail");
+        cPassword = document.getElementById("contPassword");
+        iPassword = document.getElementById("inputPassword");
+        cPhone = document.getElementById("contPhone");
+        iPhone = document.getElementById("inputPhone");
+        txtBtnLeft = document.getElementById("txtBtnLeft");
+        txtBtnRight = document.getElementById("txtBtnRight");
+        page = localStorage.getItem("account_page") || "register";
+        change();
+    }
+
+    function errText(cont,text) {
+        let p = document.createElement("p");
+        p.textContent = text;
+        p.classList.add("errText");
+        cont.appendChild(p);
+    }
+
+    function change() {
+        iUser.value = "";
+        iEmail.value = "";
+        iPassword.value = "";
+        iPhone.value = "";
+
+        if (page == "login") {
+            title.textContent = "Iniciar Sesion";
+            txtBtnLeft.textContent = "Confirmar";
+            txtBtnRight.textContent = "Registrarse";
+            cPhone.hidden = true;
+        }
+        if (page == "register") {
+            title.textContent = "Registrarse";
+            txtBtnLeft.textContent = "Confirmar";
+            txtBtnRight.textContent = "Iniciar Sesión";
+            cPhone.hidden = false;
+        }
+        if (page == "account") {
+            title.textContent = "Tu Cuenta";
+            txtBtnLeft.textContent = "Editar";
+            txtBtnRight.textContent = "Cerrar Sesión";
+            cPhone.hidden = false;
+            let logins = JSON.parse(localStorage.getItem("account_logins")) || [];
+            let log_index = localStorage.getItem("account_selected") || 0;
+            let log = logins[log_index];
+            iUser.value = log.user;
+            iEmail.value = log.email;
+            iPassword.value = log.password;
+            iPhone.value = log.phone;
+        }
+    }
+
+    function clickButton(pos) {
+        event.preventDefault();
+
+        let errTexts = document.querySelectorAll(".errText");
+        for (let text of errTexts) {text.remove();}
+
+        let logins = JSON.parse(localStorage.getItem("account_logins")) || [];
+
+        if (pos == -1) {
+            let err = false;
+
+            if (page != "login") {
+                if (iUser.value.length < 1) {
+                    errText(cUser,"Ingrese un usuario!!");
+                } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9_]+$/.test(iUser.value)) {
+                    errText(cUser,"Solo se permite letras números y guión!!");
+                } else if (iUser.value.length < 4) {
+                    errText(cUser,"Mínimo tiene que haber 4 caracteres!!");
+                } else if (iUser.value.length > 20) {
+                    errText(cUser,"El máximo es solo de 20 caracteres!!");
+                } else {
+                    let logId = localStorage.getItem("account_selected") || 0;
+                    let exist = false;
+                    for (let i = 0; i < logins.length; i++) {
+                        if (logins[i].user == iUser.value) {
+                            exist = true;
+                            if (page == "account") {
+                                if (i == logId) {exist = false;}
+                            }
+                        }
+                    }
+                    if (exist) {
+                        errText(cUser,"Ese nombre de usuario ya existe!!");
+                    }
+                }
+
+                if (iEmail.value.length < 1) {
+                    errText(cEmail, "Ingrese un correo electrónico!!");
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(iEmail.value)) {
+                    errText(cEmail, "Ingrese un email válido!!");
+                } else {
+                    let logId = localStorage.getItem("account_selected") || 0;
+                    let exist = false;
+                    for (let i = 0; i < logins.length; i++) {
+                        if (logins[i].email == iEmail.value) {
+                            exist = true;
+                            if (page == "account") {
+                                if (i == logId) {exist = false;}
+                            }
+                        }
+                    }
+                    if (exist) {
+                        errText(cEmail,"Ese email ya está en uso!!");
+                    }
+                }
+
+                if (iPassword.value.length < 1) {
+                    errText(cPassword,"Ingrese una contraseña!!");
+                } else if (iPassword.value.length < 6) {
+                    errText(cPassword,"Mínimo tiene que haber 6 caracteres!!");
+                }
+
+                if (iPhone.value.length < 1) {
+                    errText(cPhone,"Ingrese un número!!");
+                } else if (!/^[0-9]+$/.test(iPhone.value)) {
+                    errText(cPhone,"Solo se permiten números!!");
+                } else if (iPhone.value.length != 10) {
+                    errText(cPhone,"Tienen que ser 10 numeros!!");
+                } else {
+                    let logId = localStorage.getItem("account_selected") || 0;
+                    let exist = false;
+                    for (let i = 0; i < logins.length; i++) {
+                        if (logins[i].phone == iPhone.value) {
+                            exist = true;
+                            if (page == "account") {
+                                if (i == logId) {exist = false;}
+                            }
+                        }
+                    }
+                    if (exist) {
+                        errText(cPhone,"Ese número ya está en uso!!");
+                    }
+                }
+            }else{
+                let log = -1;
+
+                if (iEmail.value.length < 1) {
+                    errText(cEmail, "Ingrese un correo electrónico!!");
+                } else {
+                    for (let i = 0; i < logins.length; i++) {
+                        if (logins[i].email == iEmail.value) {
+                            log = i;
+                        }
+                    }
+                    if (log == -1) {
+                        errText(cEmail,"Ese correo no ha sido registrado!!");
+                    }
+                }
+
+                if (iUser.value.length < 1) {
+                    errText(cUser,"Ingrese un usuario!!");
+                } else {
+                    if (log != -1 && logins[log].user != iUser.value) {
+                        errText(cUser,"Usuario incorrecto!!");
+                    }
+                }
+
+                if (iPassword.value.length < 1) {
+                    errText(cPassword,"Ingrese una contraseña!!");
+                } else {
+                    if (log != -1 && logins[log].password != iPassword.value) {
+                        errText(cPassword,"Contraseña incorrecta!!");
+                    }
+                }
+            }
+
+            errTexts = document.querySelectorAll(".errText");
+            if (errTexts.length > 0) {err = true;}
+
+            if (!err) {
+                let log = {user: iUser.value, email: iEmail.value, password: iPassword.value, phone: iPhone.value};
+                let nLogins = logins;
+
+                if (page == "login") {
+                    page = "account";
+                    change(); return;
+                }
+                if (page == "register") {
+                    nLogins.push(log);
+                    localStorage.setItem("account_logins", JSON.stringify(nLogins));
+                    localStorage.setItem("account_selected", nLogins.length - 1);
+                    page = "login";
+                    change(); return;
+                }
+                if (page == "account") {
+                    let logId = localStorage.getItem("account_selected");
+                    nLogins[logId] = log;
+                    localStorage.setItem("account_logins", JSON.stringify(nLogins));
+                    change(); return;
+                }
+            }
+        } else {
+            if (page == "login") {page = "register"; change(); return;}
+            if (page == "register" || page == "account") {page = "login"; change(); return;}
+        }
+    }
+
+    function clearData() {
+        event.preventDefault();
+        localStorage.setItem("account_logins", JSON.stringify([]));
+    }
+}

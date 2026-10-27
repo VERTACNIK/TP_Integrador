@@ -6,41 +6,58 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
         <link rel="icon" href="./assets/img/home_isotipo.png">
         <title>AstroSpace - Cuenta</title>
+        <script src="assets/js/script.js" defer></script>
     </head>
     <body>
     <header>
         <div>
-            <a href="index.html">
-                <img id="isotipo" src="assets/img/home_isotipo.png" alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
-                AstroSpace
-            </a>
+            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"  alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+                AstroSpace</a>
         </div>
         <div>
-            <a id="noticias" href="index.html">VOLVER</a>
+            <a id="noticias-link" href="noticias.html">Noticias</a>
         </div>
         <div>
-            <a id="noticias" href="cuenta.html">CUENTA</a>
+            <a id="newsletter-link" href="newsletter.html">Newsletter</a>
+        </div>
+        <div>
+            <a id="account-link" href="cuenta.html">Cuenta</a>
         </div>
     </header>
     <main>
         <div class="account">
             <form action="">
-                <section>Iniciar Sesión</section>
-                <div id="ContainerUser" style="margin-top: 30px;">
-                    <label for="name">Usuario: </label>
-                    <input id="inputUser" type="text" required>
+                <section id="accountTitle">Iniciar Sesión</section>
+                <div id="contUser" style="margin-top: 30px;">
+                    <div>
+                        <label for="name">Usuario: </label>
+                        <input id="inputUser" type="text" required>
+                    </div>
                 </div>
-                <div id="ContainerUser" style="margin-top: 30px;">
-                    <label for="name">Correo: </label>
-                    <input id="inputUser" type="text" required>
+                <div id="contEmail" style="margin-top: 30px;">
+                    <div>
+                        <label for="name">Correo: </label>
+                        <input id="inputEmail" type="text" required>
+                    </div>
                 </div>
-                <div id="ContainerUser" style="margin-top: 30px;">
-                    <label for="name">Contraseña: </label>
-                    <input id="inputUser" type="text" required>
+                <div id="contPassword" style="margin-top: 30px;">
+                    <div>
+                        <label for="name">Contraseña: </label>
+                        <input id="inputPassword" type="text" required>
+                    </div>
+                </div>
+                <div id="contPhone" style="margin-top: 30px;">
+                    <div>
+                        <label for="name">Teléfono: </label>
+                        <input id="inputPhone" type="text" required>
+                    </div>
                 </div>
                 <div id="accountButtom" style="margin-top: 30px;">
-                    <button></button>
-                    <button></button>
+                    <div>
+                        <button onclick="clickButton(-1);"><p id="txtBtnLeft"></p></button>
+                        <button onclick="clickButton(1);"><p id="txtBtnRight"></p></button> 
+                        <button onclick="clearData(1);" hidden><p>Limpiar</p></button> 
+                    </div>
                 </div>
             </form>
         </div>
