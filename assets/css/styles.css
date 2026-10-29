@@ -30,6 +30,13 @@ body {
     justify-content: space-between;
 }
 
+/* << SCROLLBAR >> */
+
+*::-webkit-scrollbar {width: 10px;}
+*::-webkit-scrollbar-track {background: #1b1b1b;}
+*::-webkit-scrollbar-thumb {background: #555; border-radius: 10px;}
+*::-webkit-scrollbar-thumb:hover {background: #777;}
+
 /* << HEADER >> */
 
 #isotipo { /* (LOGO EN LA BARRA) */
@@ -392,6 +399,134 @@ main {
     position: absolute;
     text-align: center;
     transform: translate(79px, 0px);
+}
+
+/* << CATEGORIAS >> */ 
+
+.categoryDiv { /* (ES EL DIV DE LA CATEGORIA COMPLETA) */
+    color: white;
+    width: 100%-10px;
+    height: 86.3vh;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 0px 10px 10px 10px;
+    gap: 10px
+}
+
+#categoryCont { /* (ES EL DIV DE LA CATEGORIA DE INFORMACIÓN) */
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#categoryCont div { /* (DIV DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
+    container-type: inline-size;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+}
+
+#categoryCont #T { /* (DIV TITULAR DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 2px 0px;
+}
+
+#categoryCont div section {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    display: flex;
+}
+
+#categoryCont div img {
+    background-color: rgb(0, 0, 0);
+    width: 30vw;
+    min-width: 150px;
+    height: fit-content;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+#categoryCont div div {
+    background-color: rgba(7, 7, 8, 0.83);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    padding: 0px 20px;
+    gap: 0px;
+    border-radius: 20px;
+}
+
+#categoryCont #Tp { /* (TITULO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
+    background-color: rgba(29, 29, 34, 0.521);
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+#categoryCont p { /* (TODO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
+    font-size: clamp(12px, 3cqw, 24px);
+    width: 100%;
+}
+
+.categoryDiv section { /* (LA BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(7, 7, 8, 0.83);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.categoryDiv section div { /* (TODO DIV DENTRO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.categoryDiv section #L { /* (DIV IZQUIERDO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    justify-content: left;
+}
+
+.categoryDiv section #R { /* (DIV DERECHO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    justify-content: right;
+}
+
+.categoryDiv section p { /* (TODO P DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(49, 48, 54, 0.521);
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.categoryDiv section section { /* (SECTION DECORATIVO DE BOTONES EN BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(49, 48, 54, 0.521);
+    width: auto;
+    padding: 0px 10px;
+    border-radius: 20px;
+    gap: 3px;
+}
+
+.categoryDiv section div section button { /* (BOTON DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    color: white;
+    transition: color 0.5s ease;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.categoryDiv section div section button:hover { /* (AL TOCAR EL BOTON DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    color: rgb(200, 200, 200);
 }
 
 /* << FOOTER >> */
