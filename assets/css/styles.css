@@ -319,14 +319,15 @@ main {
     border-radius: 10px;
 }
 
-#form input:hover, #form select:hover #form textarea:hover{
-    border-color: rgb(37, 99, 235);
-}
-
 #form textarea {
     width: 100%;
     min-height: 120px;
     resize: vertical;
+}
+
+#form input:hover, #form select:hover #form textarea:hover{
+    border-color: rgb(37, 99, 235);
+    transition: 0.2s ease;
 }
 
 /* << CUENTA >> */ 

@@ -1,38 +1,4 @@
-// script general
 const rutaActual = window.location.pathname;
-
-const homeLink = document.getElementById("home-link");
-const nltLink = document.getElementById("newsletter-link");
-const newsLink = document.getElementById("noticias-link");
-const accountLink = document.getElementById("account-link");
-
-homeLink.addEventListener('click', function (ev) {
-    if (rutaActual.endsWith("index.html")) {
-        ev.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-})
-
-nltLink.addEventListener('click', function (ev) {
-    if (rutaActual.endsWith("newsletter.html")) {
-        ev.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-});
-
-newsLink.addEventListener('click', function (ev) {
-    if (rutaActual.endsWith("noticias.html")) {
-        ev.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-});
-
-accountLink.addEventListener('click', function (ev) {
-    if (rutaActual.endsWith("cuenta.html")) {
-        ev.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-});
 
 // fin script general
 
@@ -109,6 +75,15 @@ if (rutaActual.endsWith("index.html")) {
         setTimeout(carruselIndex, 7000);
     }
 
+    const homeLink = document.getElementById("home-link");
+    homeLink.addEventListener('click', function (ev) {
+        if (rutaActual.endsWith("index.html")) {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    })
+
+
 }
 
 // fin script de index
@@ -154,7 +129,7 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
     let boolApellido = true;
 
     if (formNombre) {
-        formNombre.addEventListener("input", function (ev) {
+        formNombre.addEventListener("input", function () {
             let valorNombre = formNombre.value.trim();
 
             if (valorNombre === "") {
@@ -166,6 +141,7 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
                 nombreMsj.textContent = "";
                 formNombre.style.borderColor = "rgb(0, 202, 44)"
                 boolNombre = true;
+
             } else {
                 nombreMsj.textContent = "Debe tener entre 2 y 50 carácteres y sin números."
                 nombreMsj.style.color = "rgb(255, 0, 0)";
@@ -387,7 +363,7 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
             boton.style.border = "2px solid rgb(204, 204, 204)";
             boton.style.borderRadius = "10px";
             boton.style.cursor = "pointer";
-            boton.addEventListener("click", function () {informe.remove();});
+            boton.addEventListener("click", function () { informe.remove(); });
             return boton;
         }
 
@@ -401,13 +377,10 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
             boolAsunto = true;
             boolNombre = true;
             boolApellido = true;
-            if (formNombre) {formNombre.style.borderColor = "";}
-            if (formApellido) {formApellido.style.borderColor = "";}
-            if (formEmail) {formEmail.style.borderColor = "";}
-            if (formFecha) {formFecha.style.borderColor = "";}
-            if (formTelefono) {formTelefono.style.borderColor = "";}
-            if (formMensaje) {formMensaje.style.borderColor = "";}
-            if (formAsunto) {formAsunto.style.borderColor = "";}
+            const forms = [formNombre, formApellido, formEmail, formFecha, formTelefono, formMensaje, formAsunto]
+            forms.forEach(forms => {
+                if (forms) forms.style.borderColor = "";
+            });
         }
 
         if (rutaActual.endsWith("newsletter.html")) { // Botón del newsletter
@@ -435,31 +408,26 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
                     const formGenero = document.querySelector("#gender");
 
                     const informe = crearInforme();
-                    const titulo = crearTitulo("Registro Exitoso");
 
-                    informe.appendChild(titulo);
+                    informe.appendChild(crearTitulo("Registro Exitoso"));
 
                     const lista = document.createElement("ul");
                     lista.style.listStyle = "none";
 
                     if (formNombre.value != "") {
-                        const nombre = crearFila("Nombre", formNombre)
-                        lista.appendChild(nombre);
+                        lista.appendChild(crearFila("Nombre", formNombre));
                     }
 
                     if (formApellido.value != "") {
-                        const apellido = crearFila("Apellido", formApellido);
-                        lista.appendChild(apellido);
+                        lista.appendChild(crearFila("Apellido", formApellido));
                     }
 
-                    const email = crearFila("E-mail", formEmail);
-                    lista.appendChild(email);
+                    lista.appendChild(crearFila("E-mail", formEmail));
 
                     emailRegistrados.push(formEmail.value);
 
                     if (formGenero && formGenero.value !== "") {
-                        const generoLi = crearFila("Género", formGenero)
-                        lista.appendChild(generoLi);
+                        lista.appendChild(crearFila("Género", formGenero));
                     }
 
                     const fecha = document.createElement("li");
@@ -503,15 +471,29 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
 
                     const informe = crearInforme();
 
-                    const titulo = crearTitulo("Envío exitoso");
-                    informe.appendChild(titulo);
+                    informe.appendChild(crearTitulo("Envío exitoso"));
 
-                    const btnCerrar = crearBtnCerrar();
+                    const lista = document.createElement("ul");
+                    lista.style.listStyle = "none";
 
-                    btnCerrar.addEventListener("click", function (ev) {
-                        informe.remove();
-                    });
+                    if (formNombre) {
+                        lista.appendChild(crearFila("Nombre", formNombre));
+                    }
 
+                    lista.appendChild(crearFila("E-mail", formEmail));
+                    lista.appendChild(crearFila("Teléfono", formTelefono));
+
+                    if (formAsunto) {
+                        lista.appendChild(crearFila("Asunto", formAsunto));
+                    }
+
+                    const msjResumen = document.createElement("li");
+                    msjResumen.textContent = `Tu mensaje con ${formMensaje.value.length} carácteres se envió con éxito.`;
+                    lista.appendChild(msjResumen)
+
+                    const btnCerrar = crearBtnCerrar(informe);
+
+                    informe.appendChild(lista);
                     informe.appendChild(btnCerrar);
                     formulario.appendChild(informe);
                     resetear();
@@ -520,6 +502,16 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
             })
         }
     }
+
+
+    const nltLink = document.getElementById("newsletter-link");
+    nltLink.addEventListener('click', function (ev) {
+        if (rutaActual.endsWith("newsletter.html")) {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    });
+
 }
 
 // fin script newsletter
@@ -755,4 +747,25 @@ if (rutaActual.endsWith("cuenta.html")) {
         event.preventDefault();
         localStorage.setItem("account_logins", JSON.stringify([]));
     }
+
+    const accountLink = document.getElementById("account-link");
+    accountLink.addEventListener('click', function (ev) {
+        if (rutaActual.endsWith("cuenta.html")) {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    });
+
+}
+
+if (rutaActual.endsWith("noticias.html")) {
+
+    const newsLink = document.getElementById("noticias-link");
+    newsLink.addEventListener('click', function (ev) {
+        if (rutaActual.endsWith("noticias.html")) {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    });
+
 }
