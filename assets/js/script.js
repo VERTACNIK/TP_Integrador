@@ -3,8 +3,8 @@ const rutaActual = window.location.pathname;
 
 const homeLink = document.getElementById("home-link");
 const nltLink = document.getElementById("newsletter-link");
-const newsLink = document.getElementById("noticias-link")
-const accountLink = document.getElementById("account-link")
+const newsLink = document.getElementById("noticias-link");
+const accountLink = document.getElementById("account-link");
 
 homeLink.addEventListener('click', function (ev) {
     if (rutaActual.endsWith("index.html")) {
@@ -115,27 +115,42 @@ if (rutaActual.endsWith("index.html")) {
 
 // script de newsletter
 
-if (rutaActual.endsWith("newsletter.html")) {
-    
+if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html")) {
+
     const emailRegistrados = []; // un extra
 
-    const nombreRegEx = /^[^0-9]{2,20}$/;
+    const nombreRegEx = /^[^0-9]{2,50}$/;
     const emailRegEx = /[a-zA-Z0-9._]+@(hotmail|gmail)\.com$/;
+    const noNumerosRegEx = /[^0-9]/; // por negación
+    const asuntoRegEx = /^.{4,50}$/;
+    const mensajeRegEx = /^.{4,500}$/;
 
-    const formulario = document.getElementById("newsletter");
+    const formulario = document.querySelector("#form");
 
     const formNombre = document.querySelector("#fname");
     const formApellido = document.querySelector("#lname");
     const formEmail = document.querySelector("#email");
     const formFecha = document.querySelector("#fnac");
+    const formTelefono = document.querySelector("#telefono");
+    const formAsunto = document.querySelector("#titulo");
+    const formMensaje = document.querySelector("#text");
 
-    const emailMsj = document.querySelector(".email-msj");
     const nombreMsj = document.querySelector(".nombre-msj");
     const apellidoMsj = document.querySelector(".apellido-msj");
+    const emailMsj = document.querySelector(".email-msj");
+    const fechaMsj = document.querySelector(".fecha-msj");
+    const telefonoMsj = document.querySelector(".telefono-msj");
+    const asuntoMsj = document.querySelector(".asunto-msj");
+    const textoMsj = document.querySelector(".text-msj");
+    const btnMensaje = document.querySelector(".submit-msj");
 
+    let valorFecha;
     let boolEmail = false;
     let boolFecha = false;
-    let boolNombre = true; // no son obligatorios
+    let boolTelefono = false;
+    let boolMsj = false;
+    let boolAsunto = true;
+    let boolNombre = true;
     let boolApellido = true;
 
     if (formNombre) {
@@ -152,13 +167,12 @@ if (rutaActual.endsWith("newsletter.html")) {
                 formNombre.style.borderColor = "rgb(0, 202, 44)"
                 boolNombre = true;
             } else {
-                nombreMsj.textContent = "Debe tener entre 2 y 20 carácteres y sin números."
+                nombreMsj.textContent = "Debe tener entre 2 y 50 carácteres y sin números."
                 nombreMsj.style.color = "rgb(255, 0, 0)";
                 formNombre.style.borderColor = "rgb(255, 0, 0)";
                 boolNombre = false;
             }
-
-        }); // validacion de nombre por longitud
+        }); // Validación de nombre por RegEx.
     }
 
     if (formApellido) {
@@ -176,14 +190,13 @@ if (rutaActual.endsWith("newsletter.html")) {
                 boolApellido = true;
 
             } else {
-                apellidoMsj.textContent = "Debe tener entre 2 y 20 carácteres y sin números."
+                apellidoMsj.textContent = "Debe tener entre 2 y 50 carácteres y sin números."
                 apellidoMsj.style.color = "rgb(255, 0, 0)";
                 formApellido.style.borderColor = "rgb(255, 0, 0)";
                 boolApellido = false;
 
             }
-
-        }); // validacion de apellido por longitud
+        }); // Validación de apellido por RegEx.
     }
 
     if (formEmail) {
@@ -213,168 +226,299 @@ if (rutaActual.endsWith("newsletter.html")) {
                 boolEmail = false;
 
             }
-        }); // validacion de email por formato
+        }); // Validación de E-mail por Reg-Ex.
     }
 
-
     if (formFecha) {
-
         formFecha.addEventListener("click", function (ev) {
             this.showPicker();
-        }); // abre el calendar al hacer click en cualquier parte del input
+        }); // Abre el calendario al clickear cualquier parte del input de fecha.
 
         formFecha.addEventListener("change", function (ev) {
-            const fechaMsj = document.getElementsByClassName("fecha-msj")[0];
-
             const fechaRef = new Date();
             const anio = fechaRef.getFullYear();
             const anioMin = anio - 13;
             const mes = String(fechaRef.getMonth() + 1).padStart(2, '0');
-            const dia = String(fechaRef.getDate()).padStart(2, '0'); // getDay() da 0 cuando es 25,
+            const dia = String(fechaRef.getDate()).padStart(2, '0'); // .getDay() devuelve 0??
             const fechaHoy = `${anio}-${mes}-${dia}`;
             const fechaMin = `${anioMin}-${mes}-${dia}`;
 
-            let fechaSel = formFecha.value;
+            valorFecha = formFecha.value;
 
-            if (fechaSel === "") {
+            if (valorFecha === "") {
                 fechaMsj.textContent = "";
                 formFecha.style.borderColor = "";
                 boolFecha = false;
-            }
-            else if (fechaSel === fechaHoy || fechaSel > fechaHoy) {
+
+            } else if (valorFecha === fechaHoy || valorFecha > fechaHoy) {
                 fechaMsj.textContent = "No puedes introducir una fecha actual o futura.";
                 fechaMsj.style.color = "rgb(255, 0, 0)";
                 formFecha.style.borderColor = "rgb(255, 0, 0)";
                 boolFecha = false;
-            }
-            else if (fechaSel > fechaMin) {
+
+            } else if (valorFecha > fechaMin) {
                 fechaMsj.textContent = "Debes ser mayor de 13 años.";
                 fechaMsj.style.color = "rgb(255, 0, 0)";
                 formFecha.style.borderColor = "rgb(255, 0, 0)";
                 boolFecha = false;
-            }
-            else {
+
+            } else {
                 fechaMsj.textContent = "";
                 formFecha.style.borderColor = "rgb(0, 202, 44)";
                 boolFecha = true;
-            }
+                const [anioF, mesF, diaF] = valorFecha.split("-");
+                valorFecha = `${diaF}-${mesF}-${anioF}`;
+
+            } // Validación por una ensalada de funciones y variables.
         });
     }
 
-    if (formulario) {
-        formulario.addEventListener("submit", function (ev) {
-            ev.preventDefault();
+    if (formTelefono) {
+        formTelefono.addEventListener("input", function (ev) {
+            let valorTelefono = formTelefono.value.trim();
 
-            const btnMsj = document.getElementsByClassName("submit-msj")[0];
+            if (valorTelefono == "") {
+                telefonoMsj.textContent = "Debes introducir un número de télefono."
+                telefonoMsj.style.color = "rgb(255, 0, 0)";
+                formTelefono.style.borderColor = "rgb(255, 0, 0)";
+                boolTelefono = false;
 
-            if (boolEmail === false || boolFecha === false ) {
-                btnMsj.textContent = "Por favor, complete los campos obligatorios."
-                btnMsj.style.color = "rgb(255, 0, 0)";
+            } else if (noNumerosRegEx.test(valorTelefono)) {
+                telefonoMsj.textContent = "Solo se admiten números.";
+                telefonoMsj.style.color = "rgb(255, 0, 0)";
+                formTelefono.style.borderColor = "rgb(255, 0, 0)";
+                boolTelefono = false;
 
-            } else if (boolApellido === false || boolNombre === false) {
-                btnMsj.textContent = "Complete o limpie los campos opcionales"
-                btnMsj.style.color = "rgb(255, 0, 0)";
+            } else if (valorTelefono.length < 8 || valorTelefono.length > 15) {
+                telefonoMsj.textContent = "Debes ingresar entre 7 y 15 dígitos";
+                telefonoMsj.style.color = "rgb(255, 0, 0)";
+                formTelefono.style.borderColor = "rgb(255, 0, 0)";
+                boolTelefono = false;
+
             } else {
-                btnMsj.textContent = "";
+                telefonoMsj.textContent = "";
+                formTelefono.style.borderColor = "rgb(0, 202, 44)";
+                boolTelefono = true;
 
-                const informeExiste = document.querySelector(".form-informe")
-                if (informeExiste) {
-                    informeExiste.remove(); // si ya hay un informe lo elimina
-                }
-
-                const nombre = document.querySelector("#fname");
-                const apellido = document.querySelector("#lname");
-                const email = document.querySelector("#email").value;
-                const gender = document.querySelector("#gender");
-                const fecha = document.querySelector("#fnac").value;
-
-                const informe = document.createElement("div");
-                informe.classList.add("form-informe");
-
-                informe.style.backgroundColor = "rgba(17, 20, 33, 0.85)";
-                informe.style.padding = "20px";
-                informe.style.borderRadius = "10px";
-                informe.style.marginTop = "10px";
-
-                const titulo = document.createElement("h3");
-                titulo.textContent = "Registro Exitoso";
-                titulo.style.color = "rgb(0, 202, 44)";
-                titulo.style.marginBottom = "10px";
-                informe.appendChild(titulo);
-
-                const lista = document.createElement("ul");
-                lista.style.listStyle = "none";
-
-                if (nombre.value != "") {
-                    const nombreLi = document.createElement("li");
-                    nombreLi.textContent = `Nombre: ${nombre.value}`;
-                    nombreLi.style.padding = "6px 0";
-                    nombreLi.style.borderBottom = "1px solid rgba(255, 255, 255, 0.5)";
-                    lista.appendChild(nombreLi);
-                }
-
-                if (apellido.value != "") {
-                    const apellidoLi = document.createElement("li");
-                    apellidoLi.textContent = `Apellido: ${apellido.value}`;
-                    apellidoLi.style.padding = "6px 0";
-                    apellidoLi.style.borderBottom = "1px solid rgba(255, 255, 255, 0.5)";
-                    lista.appendChild(apellidoLi);
-                }
-
-                const emailLi = document.createElement("li");
-                emailLi.textContent = `E-mail: ${email}`;
-                emailLi.style.padding = "6px 0";
-                emailLi.style.borderBottom = "1px solid rgba(255, 255, 255, 0.5)";
-                lista.appendChild(emailLi);
-
-                emailRegistrados.push(email);
-                
-                for (const element of emailRegistrados) {
-                    console.log(element);
-                }
-
-                if (gender && gender.value !== "") {
-                    const generoLi = document.createElement("li");
-                    generoLi.textContent = `Género: ${gender.value}`;
-                    generoLi.style.padding = "6px 0";
-                    generoLi.style.borderBottom = "1px solid rgba(255, 255, 255, 0.5)";
-                    lista.appendChild(generoLi);
-                }
-
-                const fechaLi = document.createElement("li");
-                fechaLi.textContent = `Fecha de nacimiento: ${fecha}`;
-                fechaLi.style.padding = "6px 0";
-
-                lista.appendChild(fechaLi);
-                informe.appendChild(lista);
-
-                const btnCerrar = document.createElement("button");
-                btnCerrar.textContent = "Cerrar";
-                btnCerrar.style.padding = "4px";
-                btnCerrar.style.border = "2px solid rgb(204, 204, 204)";
-                btnCerrar.style.borderRadius = "10px";
-                btnCerrar.style.cursor = "pointer";
-
-                btnCerrar.addEventListener("click", function (ev) {
-                    informe.remove();
-                });
-
-                informe.appendChild(btnCerrar);
-                formulario.appendChild(informe);
-                formulario.reset();
-
-                formNombre.style.borderColor = "";
-                formApellido.style.borderColor = "";
-                formEmail.style.borderColor = "";
-                formFecha.style.borderColor = "";
-
-                boolNombre = true;
-                boolApellido = true;
-                boolEmail = false;
-                boolFecha = false;
             }
+        }); // Validación del teléfono por RegEx y .length.
+    }
 
-        });
+    if (formAsunto) {
+        formAsunto.addEventListener("input", function (ev) {
+            let valorAsunto = formAsunto.value.trim();
+
+            if (valorAsunto == "") {
+                asuntoMsj.textContent = "";
+                formAsunto.style.borderColor = "";
+                boolAsunto = true;
+
+            } else if (asuntoRegEx.test(valorAsunto)) {
+                asuntoMsj.textContent = "";
+                formAsunto.style.borderColor = "rgb(0, 202, 44)";
+                boolAsunto = true;
+
+            } else {
+                asuntoMsj.textContent = "Debe tener entre 2 y 50 carácteres."
+                asuntoMsj.style.color = "rgb(255, 0, 0)";
+                formAsunto.style.borderColor = "rgb(255, 0, 0)";
+                boolAsunto = false;
+
+            }
+        }); // Validación del asunto por RegEx.
+    }
+
+    if (formMensaje) {
+        formMensaje.addEventListener("input", function (ev) {
+            let valorMensaje = formMensaje.value.trim();
+
+            if (valorMensaje === "") {
+                textoMsj.textContent = "";
+                formMensaje.style.borderColor = "";
+                boolMsj = false;
+
+            } else if (mensajeRegEx.test(valorMensaje)) {
+                textoMsj.textContent = "";
+                formMensaje.style.borderColor = "rgb(0, 202, 44)"
+                boolMsj = true;
+
+            } else {
+                textoMsj.textContent = "El mensaje debe contener entre 4 y 500 carácteres."
+                textoMsj.style.color = "rgb(255, 0, 0)";
+                formMensaje.style.borderColor = "rgb(255, 0, 0)";
+                boolMsj = false;
+
+            }
+        }); // Validación del asunto por RegEx.
+    }
+
+    if (formulario) {
+
+        function crearInforme() {
+            const informe = document.createElement("div");
+            informe.classList.add("form-informe");
+            informe.style.backgroundColor = "rgba(17, 20, 33, 0.85)";
+            informe.style.padding = "20px";
+            informe.style.borderRadius = "10px";
+            informe.style.marginTop = "10px";
+            return informe;
+        }
+
+        function crearTitulo(texto) {
+            const titulo = document.createElement("h3");
+            titulo.textContent = `${texto}`;
+            titulo.style.color = "rgb(0, 202, 44)";
+            titulo.style.marginBottom = "10px";
+            return titulo;
+        }
+
+        function crearFila(texto, variable) {
+            const fila = document.createElement("li");
+            fila.textContent = `${texto}: ${variable.value}`;
+            fila.style.padding = "6px 0";
+            fila.style.borderBottom = "1px solid rgba(255, 255, 255, 0.5)";
+            return fila;
+        }
+
+        function crearBtnCerrar(informe) {
+            const boton = document.createElement("button");
+            boton.textContent = "Cerrar";
+            boton.style.padding = "4px";
+            boton.style.border = "2px solid rgb(204, 204, 204)";
+            boton.style.borderRadius = "10px";
+            boton.style.cursor = "pointer";
+            boton.addEventListener("click", function () {informe.remove();});
+            return boton;
+        }
+
+        function resetear() {
+            formulario.reset();
+            valorFecha = "";
+            boolEmail = false;
+            boolFecha = false;
+            boolTelefono = false;
+            boolMsj = false;
+            boolAsunto = true;
+            boolNombre = true;
+            boolApellido = true;
+            if (formNombre) {formNombre.style.borderColor = "";}
+            if (formApellido) {formApellido.style.borderColor = "";}
+            if (formEmail) {formEmail.style.borderColor = "";}
+            if (formFecha) {formFecha.style.borderColor = "";}
+            if (formTelefono) {formTelefono.style.borderColor = "";}
+            if (formMensaje) {formMensaje.style.borderColor = "";}
+            if (formAsunto) {formAsunto.style.borderColor = "";}
+        }
+
+        if (rutaActual.endsWith("newsletter.html")) { // Botón del newsletter
+
+            formulario.addEventListener("submit", function (ev) {
+                ev.preventDefault();
+
+                if (boolEmail === false || boolFecha === false) {
+                    btnMensaje.textContent = "Por favor, complete los campos obligatorios."
+                    formEmail.style.borderColor = "rgb(255, 0, 0)";
+                    btnMensaje.style.color = "rgb(255, 0, 0)";
+
+                } else if (boolApellido === false || boolNombre === false) {
+                    btnMensaje.textContent = "Complete o limpie los campos opcionales."
+                    btnMensaje.style.color = "rgb(255, 0, 0)";
+
+                } else {
+                    btnMensaje.textContent = "";
+
+                    const informeExiste = document.querySelector(".form-informe")
+                    if (informeExiste) {
+                        informeExiste.remove(); // Si ya hay un informe, lo elimina.
+                    }
+
+                    const formGenero = document.querySelector("#gender");
+
+                    const informe = crearInforme();
+                    const titulo = crearTitulo("Registro Exitoso");
+
+                    informe.appendChild(titulo);
+
+                    const lista = document.createElement("ul");
+                    lista.style.listStyle = "none";
+
+                    if (formNombre.value != "") {
+                        const nombre = crearFila("Nombre", formNombre)
+                        lista.appendChild(nombre);
+                    }
+
+                    if (formApellido.value != "") {
+                        const apellido = crearFila("Apellido", formApellido);
+                        lista.appendChild(apellido);
+                    }
+
+                    const email = crearFila("E-mail", formEmail);
+                    lista.appendChild(email);
+
+                    emailRegistrados.push(formEmail.value);
+
+                    if (formGenero && formGenero.value !== "") {
+                        const generoLi = crearFila("Género", formGenero)
+                        lista.appendChild(generoLi);
+                    }
+
+                    const fecha = document.createElement("li");
+                    fecha.textContent = `Fecha de nacimiento: ${valorFecha}`;
+                    fecha.style.padding = "6px 0";
+                    lista.appendChild(fecha);
+
+                    informe.appendChild(lista);
+
+                    const btnCerrar = crearBtnCerrar(informe);
+
+                    informe.appendChild(btnCerrar);
+                    formulario.appendChild(informe);
+                    resetear();
+                }
+
+            });
+        }
+
+        if (rutaActual.endsWith("contacto.html")) {
+
+            formulario.addEventListener("submit", function (ev) {
+
+                ev.preventDefault();
+
+                if (boolEmail === false || boolTelefono === false || boolMsj === false) {
+                    btnMensaje.textContent = "Por favor, complete los campos obligatorios."
+                    btnMensaje.style.color = "rgb(255, 0, 0)";
+
+                } else if (boolNombre === false || boolAsunto === false) {
+                    btnMensaje.textContent = "Complete o limpie los campos opcionales."
+                    btnMensaje.style.color = "rgb(255, 0, 0)";
+
+                } else {
+                    btnMensaje.textContent = "";
+
+                    const informeExiste = document.querySelector(".form-informe")
+                    if (informeExiste) {
+                        informeExiste.remove();
+                    }
+
+                    const informe = crearInforme();
+
+                    const titulo = crearTitulo("Envío exitoso");
+                    informe.appendChild(titulo);
+
+                    const btnCerrar = crearBtnCerrar();
+
+                    btnCerrar.addEventListener("click", function (ev) {
+                        informe.remove();
+                    });
+
+                    informe.appendChild(btnCerrar);
+                    formulario.appendChild(informe);
+                    resetear();
+
+                }
+            })
+        }
     }
 }
 
@@ -420,7 +564,7 @@ if (rutaActual.endsWith("cuenta.html")) {
         change();
     }
 
-    function errText(cont,text) {
+    function errText(cont, text) {
         let p = document.createElement("p");
         p.textContent = text;
         p.classList.add("errText");
@@ -464,7 +608,7 @@ if (rutaActual.endsWith("cuenta.html")) {
         event.preventDefault();
 
         let errTexts = document.querySelectorAll(".errText");
-        for (let text of errTexts) {text.remove();}
+        for (let text of errTexts) { text.remove(); }
 
         let logins = JSON.parse(localStorage.getItem("account_logins")) || [];
 
@@ -473,13 +617,13 @@ if (rutaActual.endsWith("cuenta.html")) {
 
             if (page != "login") {
                 if (iUser.value.length < 1) {
-                    errText(cUser,"Ingrese un usuario!!");
+                    errText(cUser, "Ingrese un usuario!!");
                 } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9_]+$/.test(iUser.value)) {
-                    errText(cUser,"Solo se permite letras números y guión!!");
+                    errText(cUser, "Solo se permite letras números y guión!!");
                 } else if (iUser.value.length < 4) {
-                    errText(cUser,"Mínimo tiene que haber 4 caracteres!!");
+                    errText(cUser, "Mínimo tiene que haber 4 caracteres!!");
                 } else if (iUser.value.length > 20) {
-                    errText(cUser,"El máximo es solo de 20 caracteres!!");
+                    errText(cUser, "El máximo es solo de 20 caracteres!!");
                 } else {
                     let logId = localStorage.getItem("account_selected") || 0;
                     let exist = false;
@@ -487,12 +631,12 @@ if (rutaActual.endsWith("cuenta.html")) {
                         if (logins[i].user == iUser.value) {
                             exist = true;
                             if (page == "account") {
-                                if (i == logId) {exist = false;}
+                                if (i == logId) { exist = false; }
                             }
                         }
                     }
                     if (exist) {
-                        errText(cUser,"Ese nombre de usuario ya existe!!");
+                        errText(cUser, "Ese nombre de usuario ya existe!!");
                     }
                 }
 
@@ -507,27 +651,27 @@ if (rutaActual.endsWith("cuenta.html")) {
                         if (logins[i].email == iEmail.value) {
                             exist = true;
                             if (page == "account") {
-                                if (i == logId) {exist = false;}
+                                if (i == logId) { exist = false; }
                             }
                         }
                     }
                     if (exist) {
-                        errText(cEmail,"Ese email ya está en uso!!");
+                        errText(cEmail, "Ese email ya está en uso!!");
                     }
                 }
 
                 if (iPassword.value.length < 1) {
-                    errText(cPassword,"Ingrese una contraseña!!");
+                    errText(cPassword, "Ingrese una contraseña!!");
                 } else if (iPassword.value.length < 6) {
-                    errText(cPassword,"Mínimo tiene que haber 6 caracteres!!");
+                    errText(cPassword, "Mínimo tiene que haber 6 caracteres!!");
                 }
 
                 if (iPhone.value.length < 1) {
-                    errText(cPhone,"Ingrese un número!!");
+                    errText(cPhone, "Ingrese un número!!");
                 } else if (!/^[0-9]+$/.test(iPhone.value)) {
-                    errText(cPhone,"Solo se permiten números!!");
+                    errText(cPhone, "Solo se permiten números!!");
                 } else if (iPhone.value.length != 10) {
-                    errText(cPhone,"Tienen que ser 10 numeros!!");
+                    errText(cPhone, "Tienen que ser 10 numeros!!");
                 } else {
                     let logId = localStorage.getItem("account_selected") || 0;
                     let exist = false;
@@ -535,15 +679,15 @@ if (rutaActual.endsWith("cuenta.html")) {
                         if (logins[i].phone == iPhone.value) {
                             exist = true;
                             if (page == "account") {
-                                if (i == logId) {exist = false;}
+                                if (i == logId) { exist = false; }
                             }
                         }
                     }
                     if (exist) {
-                        errText(cPhone,"Ese número ya está en uso!!");
+                        errText(cPhone, "Ese número ya está en uso!!");
                     }
                 }
-            }else{
+            } else {
                 let log = -1;
 
                 if (iEmail.value.length < 1) {
@@ -555,32 +699,32 @@ if (rutaActual.endsWith("cuenta.html")) {
                         }
                     }
                     if (log == -1) {
-                        errText(cEmail,"Ese correo no ha sido registrado!!");
+                        errText(cEmail, "Ese correo no ha sido registrado!!");
                     }
                 }
 
                 if (iUser.value.length < 1) {
-                    errText(cUser,"Ingrese un usuario!!");
+                    errText(cUser, "Ingrese un usuario!!");
                 } else {
                     if (log != -1 && logins[log].user != iUser.value) {
-                        errText(cUser,"Usuario incorrecto!!");
+                        errText(cUser, "Usuario incorrecto!!");
                     }
                 }
 
                 if (iPassword.value.length < 1) {
-                    errText(cPassword,"Ingrese una contraseña!!");
+                    errText(cPassword, "Ingrese una contraseña!!");
                 } else {
                     if (log != -1 && logins[log].password != iPassword.value) {
-                        errText(cPassword,"Contraseña incorrecta!!");
+                        errText(cPassword, "Contraseña incorrecta!!");
                     }
                 }
             }
 
             errTexts = document.querySelectorAll(".errText");
-            if (errTexts.length > 0) {err = true;}
+            if (errTexts.length > 0) { err = true; }
 
             if (!err) {
-                let log = {user: iUser.value, email: iEmail.value, password: iPassword.value, phone: iPhone.value};
+                let log = { user: iUser.value, email: iEmail.value, password: iPassword.value, phone: iPhone.value };
                 let nLogins = logins;
 
                 if (page == "login") {
@@ -602,8 +746,8 @@ if (rutaActual.endsWith("cuenta.html")) {
                 }
             }
         } else {
-            if (page == "login") {page = "register"; change(); return;}
-            if (page == "register" || page == "account") {page = "login"; change(); return;}
+            if (page == "login") { page = "register"; change(); return; }
+            if (page == "register" || page == "account") { page = "login"; change(); return; }
         }
     }
 

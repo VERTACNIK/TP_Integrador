@@ -7,6 +7,16 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: rgb(15, 118, 110);
+    transition: 0.2s ease;
+}
+
 body {
     background-image: url(../img/body_background.jpg);
     background-color: rgb(0, 0, 0);
@@ -58,6 +68,7 @@ header div * { /* (CUALQUIER TEXTO EN EL DIV) */
     transition: color 0.2s ease;
     text-decoration: none;
 }
+
 
 header div *:hover { /* (AL SELECCIONAR CUALQUIER TEXTO EN EL DIV) */
     color: rgb(252, 252, 179);
@@ -252,7 +263,7 @@ main {
     font-weight: inherit;
 }
 
-#newsletter-container {
+#form-container {
     background-color: rgba(17, 20, 33, 0.5);
     backdrop-filter: blur(8px);
     color: white;
@@ -267,12 +278,12 @@ main {
     font-size: 1.1rem;
 }
 
-#newsletter-head {
+#form-head {
     padding: 20px;
     font-size: 1rem;
 }
 
-#newsletter {
+#form {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -280,7 +291,7 @@ main {
     max-width: 400px;
 }
 
-#newsletter-content {
+#form-content {
     flex: 1;
     width: 100%;
     display: flex;
@@ -290,26 +301,32 @@ main {
     padding: 30px 20px;
 }
 
-#newsletter-foot {
+#form-foot {
     padding: 20px;
     font-size: 0.8rem;
 }
 
-#newsletter div {
+#form div {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-#newsletter input, #newsletter select, #newsletter option {
+#form input, #form select, #form option, #form textarea {
     padding: 6px;
     font-size: 1rem;
     border: 2px solid rgb(204, 204, 204);
     border-radius: 10px;
 }
 
-#newsletter input:hover, #newsletter select:hover {
+#form input:hover, #form select:hover #form textarea:hover{
     border-color: rgb(37, 99, 235);
+}
+
+#form textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
 }
 
 /* << CUENTA >> */ 
@@ -394,5 +411,5 @@ footer div {
 }
 
 footer div p {
-    font-size: 15px;
+    font-size: 0.9rem;
 }
