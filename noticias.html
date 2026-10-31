@@ -1,32 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
-        <link rel="icon" href="./assets/img/home_isotipo.png">
-        <title>AstroSpace - Noticias</title>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/img/home_isotipo.png">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <script src="assets/js/script.js" defer></script>
+    <title>Noticias</title>
+</head>
+
+<body>
     <header>
         <div>
-            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"  alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"
+                    alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
                 AstroSpace</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="noticias-link" href="noticias.html">Noticias</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="newsletter-link" href="newsletter.html">Newsletter</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="account-link" href="cuenta.html">Cuenta</a>
         </div>
+            <button class="boton-menu">☰</button>
+        <nav class="menu-oculto">
+            <ul>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="cuenta.html">Cuenta</a></li>
+            </ul>
+        </nav>
     </header>
-        <main>
-        <div class="carrusel"></div>
+    <main>
         <div class="noticias">
-
+            <div id="noticia-head">
+                <h1>Últimas Noticias</h1>
+                <p>Enterate de los descubrimientos más recientes, misiones espaciales y novedades del cosmos.</p>
+            </div>
+            <article class="noticia-fila">
+                <a href="noticia_01.html" class="noticia-link">
+                    <img src="assets/img/icono.png" alt="" class="noticia-imagen">
+                    <div class="noticia-contenido">
+                        <h3 class="noticia-titulo">Título de la noticia</h3>
+                        <p class="noticia-texto">Brevísima introducción de la noticia.</p>
+                    </div>
+                </a>
+            </article>
+            <article class="noticia-fila">
+                <a href="noticia_02.html" class="noticia-link">
+                    <img src="assets/img/icono.png" alt="" class="noticia-imagen">
+                    <div class="noticia-contenido">
+                        <h3 class="noticia-titulo">Título de la noticia</h3>
+                        <p class="noticia-texto">Brevísima introducción de la noticia.</p>
+                    </div>
+                </a>
+            </article>
+            <article class="noticia-fila">
+                <a href="noticia_03html" class="noticia-link">
+                    <img src="assets/img/icono.png" alt="" class="noticia-imagen">
+                    <div class="noticia-contenido">
+                        <h3 class="noticia-titulo">Título de la noticia</h3>
+                        <p class="noticia-texto">Brevísima introducción de la noticia.</p>
+                    </div>
+                </a>
+            </article>
         </div>
     </main>
     <footer>
@@ -40,8 +82,7 @@
         <div>
             <h3>Información del sitio</h3>
             <p>Autores: Axel Vertacnik y Nicolás Costantini</p>
-            <p>Correos: vertacnikaxellautaro@gmail.com</p>
-            <p>Contacto: nico.cost96@gmail.com</p>
+            <a href="contacto.html">¡Contactanos!</a>
             <p>Proyecto educativo sobre el espacio y el universo.</p>
         </div>
         <div>
@@ -50,4 +91,5 @@
         </div>
     </footer>
 </body>
+
 </html>

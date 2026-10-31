@@ -13,18 +13,28 @@
 <body>
     <header>
         <div>
-            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"  alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
+            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"
+                    alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
                 AstroSpace</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="noticias-link" href="noticias.html">Noticias</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="newsletter-link" href="newsletter.html">Newsletter</a>
         </div>
-        <div>
+        <div class="ocultable">
             <a id="account-link" href="cuenta.html">Cuenta</a>
         </div>
+            <button class="boton-menu">☰</button>
+        <nav class="menu-oculto">
+            <ul>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="cuenta.html">Cuenta</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <div id="form-container">
@@ -37,19 +47,19 @@
                 <form id="form" method="post">
                     <div style="font-size: 0.8rem">Los campos con * son obligatorios</div>
                     <div>
-                        <span class="nombre-msj"></span>
                         <label for="fname">Nombre</label>
                         <input type="text" id="fname" name="fname_user" autocomplete="given-name">
+                        <span class="nombre-msj"></span>
                     </div>
                     <div>
-                        <span class="apellido-msj"></span>
                         <label for="lname">Apellido</label>
                         <input type="text" id="lname" name="lname_user" autocomplete="family-name">
+                        <span class="apellido-msj"></span>
                     </div>
                     <div>
-                        <span class="email-msj"></span>
                         <label for="email">E-mail *</label>
                         <input type="text" id="email" name="email_user" value="" autocomplete="email">
+                        <span class="email-msj"></span>
                     </div>
                     <div>
                         <label for="gender">Género</label>
@@ -61,13 +71,13 @@
                         </select>
                     </div>
                     <div>
-                        <span class="fecha-msj"></span>
                         <label for="fnac">Fecha de nacimiento *</label>
                         <input type="date" id="fnac" name="bday_user"><br>
+                        <span class="fecha-msj"></span>
                     </div>
                     <div>
+                        <input type="submit" id="btn-submit" value="Recibir novedades">
                         <span class="submit-msj"></span>
-                        <input type="submit" id="btn-submit" value="Registrarme">
                     </div>
                 </form>
             </div>

@@ -1,4 +1,11 @@
 const rutaActual = window.location.pathname;
+const botonMenu = document.querySelector(".boton-menu");
+const menuOculto = document.querySelector(".menu-oculto");
+
+botonMenu.addEventListener("click", function () {
+    menuOculto.classList.toggle("activo")
+});
+
 
 // fin script general
 
@@ -371,11 +378,23 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
         function crearBtnCerrar(informe) {
             const boton = document.createElement("button");
             boton.textContent = "Cerrar";
+            boton.style.color = "white";
             boton.style.padding = "4px";
             boton.style.border = "2px solid rgb(204, 204, 204)";
             boton.style.borderRadius = "10px";
             boton.style.cursor = "pointer";
-            boton.addEventListener("click", function () { informe.remove(); });
+            boton.style.backgroundColor = "rgb(189, 0, 0)";
+            boton.addEventListener("click", function () {
+                informe.remove();
+            });
+            boton.addEventListener("mouseenter", function () {
+                boton.style.backgroundColor = "rgb(37, 99, 235)";
+            boton.style.border = "2px solid rgb(37, 99, 235)";
+            });
+            boton.addEventListener("mouseleave", function () {
+            boton.style.backgroundColor = "rgb(189, 0, 0)";
+            boton.style.border = "2px solid rgb(204, 204, 204)";
+            });
             return boton;
         }
 
@@ -403,6 +422,7 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
                 if (boolEmail === false || boolFecha === false) {
                     btnMensaje.textContent = "Por favor, complete los campos obligatorios."
                     formEmail.style.borderColor = "rgb(255, 0, 0)";
+                    formFecha.style.borderColor = "rgb(255, 0, 0)"
                     btnMensaje.style.color = "rgb(255, 0, 0)";
 
                 } else if (boolApellido === false || boolNombre === false) {
@@ -514,7 +534,6 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
             })
         }
     }
-
 
     const nltLink = document.getElementById("newsletter-link");
     nltLink.addEventListener('click', function (ev) {
