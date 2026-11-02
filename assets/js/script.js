@@ -550,41 +550,24 @@ if (rutaActual.endsWith("newsletter.html") || rutaActual.endsWith("contacto.html
 // script de cuenta
 
 if (rutaActual.endsWith("cuenta.html")) {
-    let page = "register";
-    let title;
-    let cUser;
-    let iUser;
-    let cEmail;
-    let iEmail;
-    let cPassword;
-    let iPassword;
-    let cPhone;
-    let iPhone;
-    let txtBtnLeft;
-    let txtBtnRight;
+    const title = document.getElementById("accountTitle");
+    const cUser = document.getElementById("contUser");
+    const iUser = document.getElementById("inputUser");
+    const cEmail = document.getElementById("contEmail");
+    const iEmail = document.getElementById("inputEmail");
+    const cPassword = document.getElementById("contPassword");
+    const iPassword = document.getElementById("inputPassword");
+    const cPhone = document.getElementById("contPhone");
+    const iPhone = document.getElementById("inputPhone");
+    const txtBtnLeft = document.getElementById("txtBtnLeft");
+    const txtBtnRight = document.getElementById("txtBtnRight");
+    let page = localStorage.getItem("account_page") || "register";
+    change();
 
     window.addEventListener("beforeunload", end);
 
     function end() {
         localStorage.setItem("account_page", page);
-    }
-
-    document.addEventListener("DOMContentLoaded", start);
-
-    function start() {
-        title = document.getElementById("accountTitle");
-        cUser = document.getElementById("contUser");
-        iUser = document.getElementById("inputUser");
-        cEmail = document.getElementById("contEmail");
-        iEmail = document.getElementById("inputEmail");
-        cPassword = document.getElementById("contPassword");
-        iPassword = document.getElementById("inputPassword");
-        cPhone = document.getElementById("contPhone");
-        iPhone = document.getElementById("inputPhone");
-        txtBtnLeft = document.getElementById("txtBtnLeft");
-        txtBtnRight = document.getElementById("txtBtnRight");
-        page = localStorage.getItem("account_page") || "register";
-        change();
     }
 
     function errText(cont, text) {
@@ -789,6 +772,10 @@ if (rutaActual.endsWith("cuenta.html")) {
 
 }
 
+// fin script cuenta
+
+// script de noticias
+
 if (rutaActual.endsWith("noticias.html")) {
 
     const newsLink = document.getElementById("noticias-link");
@@ -801,26 +788,18 @@ if (rutaActual.endsWith("noticias.html")) {
 
 }
 
-// fin script cuenta
+// fin script noticias
 
 // script de categoria
 
 if (rutaActual.includes("categoria")) {
-    let cont;
-    let barTitle;
-    let check;
+    const cont = document.getElementById("categoryCont");
+    const barTitle = document.getElementById("barTitle");
+    const categoria = rutaActual.split("/").pop().replace(".html","");
+    const check = document.querySelectorAll(".check");
     let iCheck = 0;
-    let categoria;
 
-    document.addEventListener("DOMContentLoaded", start);
-
-    function start() {
-        cont = document.getElementById("categoryCont");
-        barTitle = document.getElementById("barTitle");
-        check = document.querySelectorAll(".check");
-        categoria = rutaActual.split("/").pop().replace(".html","");
-        change(localStorage.getItem(categoria) || 1);
-    }
+    change(localStorage.getItem(categoria) || 1);
 
     function change(ind) {
         cont.scrollTo({ top: 0, behavior: "smooth" });

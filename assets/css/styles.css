@@ -236,19 +236,32 @@ main {
 }
 
 .contDiv { /* (DIV DE LAS TARJETAS) */
-    background-color:  rgba(17, 20, 35, 0.5);
+    background-color: rgba(17, 20, 35, 0.5);
     backdrop-filter: blur(8px);
+
     width: 100%;
+    box-sizing: border-box;
     margin: 0 auto;
+
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+
+    flex-wrap: nowrap;
     gap: 15px;
     padding: 20px;
 
+    overflow-x: auto;
+    overflow-y: hidden;
 }
+
+/* (SCROLL DIV DE LAS TARJETAS) */
+.contDiv::-webkit-scrollbar {height: 13px;}
+.contDiv::-webkit-scrollbar-track {background: rgba(0, 0, 0, 0);}
+.contDiv::-webkit-scrollbar-thumb {background: rgb(31, 35, 54); border-radius: 10px;}
+.contDiv::-webkit-scrollbar-thumb:hover {background: rgb(39, 44, 65);}
 
 .contDiv a { /* ("A" DE LAS TARJETAS) */
     text-decoration: none;
@@ -261,6 +274,7 @@ main {
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    flex-shrink: 0;
     position: relative;
     flex-direction: column;
     justify-content: flex-end;
@@ -270,7 +284,7 @@ main {
 }
 
 .contDiv a:hover { /* (EFECTO AL SELECCIONAR UNA TARJETA) */
-    height: auto;
+    height: 220px;
     width: 220px;
     aspect-ratio: 1 / 1;
     font-size: 1.1rem;
@@ -509,6 +523,7 @@ main {
 /* << CATEGORIAS >> */ 
 
 .categoryDiv { /* (ES EL DIV DE LA CATEGORIA COMPLETA) */
+    box-sizing: border-box;
     color: white;
     width: 100%;
     height: 86.3vh;
@@ -516,17 +531,20 @@ main {
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin: 0px 10px 10px 10px;
-    gap: 10px
+    margin: 0;
+    padding: 0 10px 10px;
+    gap: 10px;
+    overflow: hidden;
 }
 
 #categoryCont { /* (ES EL DIV DE LA CATEGORIA DE INFORMACIÓN) */
-    height: 100%;
+    box-sizing: border-box;
     width: 100%;
+    min-width: 0;
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    overflow-x: hidden;
 }
 
 #categoryCont div { /* (DIV DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
