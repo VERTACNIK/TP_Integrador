@@ -12,41 +12,39 @@
 <body>
     <header>
         <div>
-            <a id="home-link" class="btn-home" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"
+            <a class="home-link" href="index.html"><img id="isotipo" src="assets/img/home_isotipo.png"
                     alt="Logo de agujero negro con disco de acreción espiralizado circundado por un anillo.">
                 AstroSpace</a>
         </div>
         <div class="ocultable">
-            <a id="noticias-link" href="noticias.html">Noticias</a>
+            <a class="noticias-link" href="noticias.html">Noticias</a>
         </div>
         <div class="ocultable">
-            <a id="newsletter-link" href="newsletter.html">Newsletter</a>
+            <a class="newsletter-link" href="newsletter.html">Newsletter</a>
         </div>
         <div class="ocultable">
-            <a id="account-link" href="cuenta.html">Cuenta</a>
+            <a class="account-link" href="cuenta.html">Cuenta</a>
         </div>
             <button class="boton-menu">☰</button>
         <nav class="menu-oculto">
             <ul>
-                <li><a href="noticias.html">Noticias</a></li>
-                <li><a href="categorias.html">Categorías</a></li>
-                <li><a href="newsletter.html">Newsletter</a></li>
-                <li><a href="cuenta.html">Cuenta</a></li>
+                <li><a class="home-link" href="index.html">Inicio</a></li>
+                <li><a class="noticias-link" href="noticias.html">Noticias</a></li>
+                <li><a class="newsletter-link" href="newsletter.html">Newsletter</a></li>
+                <li><a class="account-link" href="cuenta.html">Cuenta</a></li>
             </ul>
         </nav>
     </header>
     <main>
 
-        <!-- TEXTO -->
-
-        <div class="textDiv">
+        <div class="encabezado-index">
             <h1>🌌 ¡Bienvenido a AstroSpace!</h1>
             <h2>Explorá los secretos del cosmos y descubrí algunos datos que el espacio tiene para ofrecerte. Desde los planetas de nuestro sistema solar hasta los misterios más profundos del universo, te invitamos a embarcarte en un viaje lleno de descubrimientos.</h2>
         </div>
 
         <!-- CARRUSEL -->
 
-        <div class="carrusel">
+        <div class="carrusel-contenedor">
             <a class="cHref" href="">
                 <section class="cShader"></section>
                 <section class="cTransition"></section>
@@ -56,13 +54,10 @@
             </a>
         </div>
 
-        <!-- TARJETAS -->
-
-        <!-- El sistema solar -->
-        <section class="textSection">
+        <section class="categoría-titulo">
             <h1>🪐 El sistema solar</h1>
         </section>
-        <div class="contDiv">
+        <div class="categoria-contenido">
             <a href="./categoria1.html" onclick="redirectCategoria('categoria1',0);">
                 <div>
                     <img src="./assets/img/T-SL-(Los-planetas).png">
@@ -111,10 +106,10 @@
         </div>
 
         <!-- Estrellas y galaxias -->
-        <section class="textSection">
+        <section class="categoría-titulo">
             <h1>⭐ Estrellas y galaxias</h1>
         </section>
-        <div class="contDiv">
+        <div class="categoria-contenido">
             <a href="./categoria2.html" onclick="redirectCategoria('categoria2',0);">
                 <div>
                     <img src="./assets/img/T-EG-(Las-nebulosas).png">
@@ -163,10 +158,10 @@
         </div>
 
         <!-- Exploración espacial -->
-        <section class="textSection">
+        <section class="categoría-titulo">
             <h1>🚀 Exploración espacial</h1>
         </section>
-        <div class="contDiv">
+        <div class="categoria-contenido">
             <a href="./categoria3.html" onclick="redirectCategoria('categoria3',0);">
                 <div>
                     <img src="./assets/img/T-EE-(Los-astronautas).png">
@@ -215,10 +210,10 @@
         </div>
 
         <!-- Misterios del universo -->
-        <section class="textSection">
+        <section class="categoría-titulo">
             <h1>🕳️ Misterios del universo</h1>
         </section>
-        <div class="contDiv">
+        <div class="categoria-contenido">
             <a href="./categoria4.html" onclick="redirectCategoria('categoria4',0);">
                 <div>
                     <img src="./assets/img/T-MU-(Agujeros-negros).png">
@@ -267,10 +262,10 @@
         </div>
 
         <!-- Fenómenos espaciales -->
-        <section class="textSection">
+        <section class="categoría-titulo">
             <h1>🌠 Fenómenos espaciales</h1>
         </section>
-        <div class="contDiv" style="margin-bottom: 40px;">
+        <div class="categoria-contenido" style="margin-bottom: 40px;">
             <a href="./categoria5.html" onclick="redirectCategoria('categoria5',0);">
                 <div>
                     <img src="./assets/img/T-FE-(Auroras-polares).png">

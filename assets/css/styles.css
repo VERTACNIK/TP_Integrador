@@ -1,6 +1,5 @@
-/* << OTRO >> */
-
-* { /* (COLOCAR UN ESTILO A TODOS LOS TEXTOS) */
+* {
+    /* (COLOCAR UN ESTILO A TODOS LOS TEXTOS) */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -12,8 +11,14 @@ a {
     color: white;
 }
 
-a:hover {
+a:hover, .categoryDiv section div section button:hover, .btn-volver:hover, .boton-menu:hover {
     color: rgb(252, 252, 179);
+    text-shadow: 0 0 10px rgb(252, 252, 179);
+    transition: 0.2s ease;
+}
+
+.boton-menu:hover, .btn-volver:hover {
+    box-shadow: 0 0 10px rgb(252, 252, 179);
     transition: 0.2s ease;
 }
 
@@ -32,14 +37,26 @@ body {
 
 /* << SCROLLBAR >> */
 
-*::-webkit-scrollbar {width: 10px;}
-*::-webkit-scrollbar-track {background: #1b1b1b;}
-*::-webkit-scrollbar-thumb {background: #555; border-radius: 10px;}
-*::-webkit-scrollbar-thumb:hover {background: #777;}
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #1b1b1b;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
 
 /* << HEADER >> */
 
-#isotipo { /* (LOGO EN LA BARRA) */
+#isotipo {
     width: 78px;
 }
 
@@ -50,7 +67,7 @@ header {
     height: 70px;
     background-color: rgb(19, 22, 29);
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
     position: fixed;
     font-weight: bold;
@@ -59,7 +76,7 @@ header {
 
 header * {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
@@ -82,17 +99,6 @@ header * {
     display: none;
 }
 
-@media (max-width: 748px) {
-    .boton-menu {
-        display: flex;
-    }
-
-    .ocultable {
-        display: none;
-    }
-
-}
-
 .menu-oculto.activo {
     display: flex;
     flex-direction: column;
@@ -103,7 +109,7 @@ header * {
     right: 0;
     background-color: rgb(19, 22, 29);
     padding: 10px 0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 00px 20px rgba(0, 0, 0, 0.85);
     z-index: 99;
 }
 
@@ -123,7 +129,7 @@ main {
     flex: 1;
 }
 
-.textDiv { /* (DIV QUE CONTIENE EL TEXTO DEL MAIN) */
+.encabezado-index {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -137,29 +143,27 @@ main {
     border-radius: 10px;
 }
 
-.textDiv * { /* (TEXTO DENTRO DEL DIV) */
+.encabezado-index h1, .encabezado-index h2 {
     padding: 10px 5%;
     background-color: rgba(17, 20, 33, 0.5);
     backdrop-filter: blur(8px);
     border-radius: 10px;
 }
 
-.carrusel { /* (DIV DEL CARRUSEL) */
+.carrusel-contenedor { /* (DIV DEL CARRUSEL) */
     width: 80%;
     display: flex;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto 0 auto;
     border-radius: 10px;
 }
 
 .cHref { /* ("A" DEL CARRUSEL) */
-    color: rgb(255, 255, 255);
     text-decoration: none;
     text-shadow: 5px 5px 4px black;
     width: 100%;
     height: 45vh;
-    transition: height 0.3s ease, filter 0.8s ease;;
+    transition: height 0.3s ease, filter 0.8s ease;
+    ;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -167,7 +171,7 @@ main {
 }
 
 .cHref:hover { /* (EFECTO AL TOCAR EL CARRUSEL) */
-    height: 50vh;
+    height: 47vh;
     filter: brightness(1.3);
 }
 
@@ -179,6 +183,7 @@ main {
     opacity: 0;
     transition: opacity 1.3s ease;
     position: absolute;
+    border-radius: 10px;
 }
 
 .cTransition.show { /* (MOSTRAR EL EFECTO DE TRANSICION DEL CARRUSEL) */
@@ -191,6 +196,7 @@ main {
     width: 100%;
     height: 100%;
     position: absolute;
+    border-radius: 10px;
 }
 
 .cImg { /* (IMAGEN DEL CARRUSEL) */
@@ -212,14 +218,14 @@ main {
     padding-bottom: 10px;
     background: linear-gradient(to top, rgb(0, 0, 0), rgba(14, 20, 34, 0));
     z-index: 4;
+    border-radius: 10px;
 }
 
 .cTxt * { /* (CAMBIAR EL FONT DENTRO DEL DIV QUE CONTIENE EL TEXTO EN EL CARRUSEL) */
     font-size: 1.4rem;
 }
 
-.textSection { /* (SECCION TITULAR DE LAS TARJETAS) */
-    color: white;
+.categoría-titulo {
     text-align: center;
     text-shadow: 5px 5px 4px black;
     display: flex;
@@ -228,70 +234,55 @@ main {
     margin-bottom: 10px;
 }
 
-.textSection * { /* (FRANJA DEL TEXTO TITULAR DE LAS TARJETAS) */
+.categoría-titulo * {
     padding: 0px 14px 6px 10px;
-    background-color:  rgba(17, 20, 35, 0.5);
+    background-color: rgba(17, 20, 35, 0.5);
     backdrop-filter: blur(8px);
     border-radius: 20px;
 }
 
-.contDiv { /* (DIV DE LAS TARJETAS) */
+.categoria-contenido {
     background-color: rgba(17, 20, 35, 0.5);
     backdrop-filter: blur(8px);
-
     width: 100%;
-    box-sizing: border-box;
     margin: 0 auto;
-
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
     justify-content: center;
-
-    flex-wrap: nowrap;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
     padding: 20px;
 
-    overflow-x: auto;
-    overflow-y: hidden;
 }
 
-/* (SCROLL DIV DE LAS TARJETAS) */
-.contDiv::-webkit-scrollbar {height: 13px;}
-.contDiv::-webkit-scrollbar-track {background: rgba(0, 0, 0, 0);}
-.contDiv::-webkit-scrollbar-thumb {background: rgb(31, 35, 54); border-radius: 10px;}
-.contDiv::-webkit-scrollbar-thumb:hover {background: rgb(39, 44, 65);}
-
-.contDiv a { /* ("A" DE LAS TARJETAS) */
+.categoria-contenido a {
     text-decoration: none;
-    height: 200px;
-    width: 200px;
-    aspect-ratio: 1 / 1;
+    height: 220px;
+    width: 220px;
     transition: height 0.3s ease, width 0.3s ease, filter 0.3s ease, font-size 0.3s ease;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    overflow: hidden;
     display: flex;
-    flex-shrink: 0;
     position: relative;
     flex-direction: column;
     justify-content: flex-end;
     box-shadow: 0 4px 6px rgb(0, 0, 0, 0.3);
-    color: black;
-    font-size: 1rem;
+    color: white;
+    font-size: 1.2rem;
 }
 
-.contDiv a:hover { /* (EFECTO AL SELECCIONAR UNA TARJETA) */
-    height: 220px;
-    width: 220px;
-    aspect-ratio: 1 / 1;
-    font-size: 1.1rem;
+.categoria-contenido a:hover {
+    /* (EFECTO AL SELECCIONAR UNA TARJETA) */
+    height: 235px;
+    width: 235px;
+    font-size: 1.3rem;
     filter: brightness(1.3);
 }
 
-.contDiv a div { /* (SOMBRA EN LA IMAGEN DEL LAS TARJETAS) */
+.categoria-contenido a div {
+    /* (SOMBRA EN LA IMAGEN DEL LAS TARJETAS) */
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -299,17 +290,19 @@ main {
     display: flex;
     position: absolute;
     flex-direction: column;
+    border-radius: 10px;
 }
 
-.contDiv a div img { /* (IMAGEN DEL LAS TARJETAS) */
+.categoria-contenido a div img { /* (IMAGEN DEL LAS TARJETAS) */
     z-index: 1;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left;
+    border-radius: 10px;
 }
 
-.contDiv a div div { /* (DIV DEL TEXTO DE LA TARJETA) */
+.categoria-contenido a div div { /* (DIV DEL TEXTO DE LA TARJETA) */
     z-index: 2;
     height: 100%;
     padding: 15px;
@@ -318,13 +311,13 @@ main {
     justify-content: end;
 }
 
-.contDiv a div div * { /* (TEXTO DE LA TARJETA) */
+.categoria-contenido a div div * { /* (TEXTO DE LA TARJETA) */
     font-size: 90%;
-    color: white;
+    color: inherit;
     text-shadow: 5px 5px 4px black;
 }
 
-.contDiv a div div h5 { /* (TEXTO DE LA TARJETA QUE NO ES TITULAR) */
+.categoria-contenido a div div h5 { /* (TEXTO DE LA TARJETA QUE NO ES TITULAR) */
     font-weight: inherit;
 }
 
@@ -400,10 +393,12 @@ main {
     background-color: rgb(37, 99, 235);
 }
 
-#form input:hover, #form select:hover #form textarea:hover{
+#form input:hover, #form select:hover #form textarea:hover {
     border-color: rgb(37, 99, 235);
     transition: 0.2s ease;
 }
+
+/* NOTICIAS */
 
 .noticias {
     display: flex;
@@ -419,8 +414,8 @@ main {
 
 #noticia-head {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 20px;
+    margin-bottom: 5px;
 }
 
 .noticia-fila {
@@ -433,7 +428,7 @@ main {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.noticia-link {
+.articulo-link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -447,7 +442,7 @@ main {
     border-bottom: none;
 }
 
-.noticia-img {
+.noticia-imagen {
     width: 140px;
     height: 140px;
     border: 1px solid rgb(204, 204, 204);
@@ -456,7 +451,88 @@ main {
     flex-shrink: 0;
 }
 
-/* << CUENTA >> */ 
+/* FIN NOTICIAS */
+
+/* ARTÍCULOS */
+
+.articulo-contenedor {
+    background-color: rgba(17, 20, 33, 0.5);
+    backdrop-filter: blur(8px);
+    width: 80%;
+    display: flex;
+    margin: 70px auto;
+    max-width: 900px;
+    gap: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.noticia-articulo {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 80%;
+    max-width: 900;
+    gap: 20px;
+    margin: 10px auto;
+    padding: 30px 0;
+    min-width: 0;
+}
+
+.articulo-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: auto;
+    min-width: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.articulo-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.articulo-header h1 {
+    padding: 15px 0;
+}
+
+.articulo-resumen {
+    font-size: 1.2rem;
+    margin: 8px 0;
+}
+
+.articulo-media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.articulo-imagen {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.articulo-imagen .fuente {
+    color: rgb(214, 186, 62);
+    font-size: 0.85rem;
+}
+
+.articulo-cuerpo {
+    padding: 10px 0;
+}
+
+/* FIN ARTÍCULOS */
+
+/* << CUENTA >> */
 
 .account {
     color: white;
@@ -475,7 +551,8 @@ main {
     width: 420px;
     display: flex;
     flex-direction: column;
-    align-content: center; /* -- organiza todo en el centro de la caja de forma vertical -- */
+    align-content: center;
+    /* -- organiza todo en el centro de la caja de forma vertical -- */
 }
 
 #accountTitle {
@@ -520,43 +597,39 @@ main {
     transform: translate(79px, 0px);
 }
 
-/* << CATEGORIAS >> */ 
+/* << CATEGORIAS >> */
 
-.categoryDiv { /* (ES EL DIV DE LA CATEGORIA COMPLETA) */
-    box-sizing: border-box;
-    color: white;
+.categoryDiv {
+    /* (ES EL DIV DE LA CATEGORIA COMPLETA) */
     width: 100%;
-    height: 86.3vh;
-    min-height: 320px;
+    height: 74vh;
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin: 0;
-    padding: 0 10px 10px;
-    gap: 10px;
-    overflow: hidden;
+    gap: 10px
 }
 
-#categoryCont { /* (ES EL DIV DE LA CATEGORIA DE INFORMACIÓN) */
-    box-sizing: border-box;
+#categoryCont {
+    /* (ES EL DIV DE LA CATEGORIA DE INFORMACIÓN) */
+    height: 100%;
     width: 100%;
-    min-width: 0;
-    flex: 1;
-    min-height: 0;
     overflow-y: auto;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#categoryCont div { /* (DIV DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
+#categoryCont div {
+    /* (DIV DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
     container-type: inline-size;
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 0px;
 }
 
-#categoryCont #T { /* (DIV TITULAR DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
+#categoryCont #T {
+    /* (DIV TITULAR DEL TEXTO DE LA CATEGORIA INFORMACIÓN) */
     font-weight: bold;
     margin-top: 10px;
     padding: 2px 0px;
@@ -580,68 +653,81 @@ main {
 }
 
 #categoryCont div div {
-    background-color: rgba(7, 7, 8, 0.83);
+    background-color: rgba(17, 20, 33, 0.5);
+    backdrop-filter: blur(8px);
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content:start;
+    justify-content: start;
     padding: 0px 20px;
     gap: 0px;
     border-radius: 20px;
 }
 
-#categoryCont #Tp { /* (TITULO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
-    background-color: rgba(29, 29, 34, 0.521);
+#categoryCont #Tp {
+    /* (TITULO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
+    background-color: rgba(17, 20, 33, 0.85);
+    box-shadow: 0 0 10px rgb(37, 99, 235);
     font-weight: bold;
     border-radius: 20px;
 }
 
-#categoryCont p { /* (TODO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
+#categoryCont p {
+    /* (TODO P QUE SE ENCUENTRE DENTRO DE LA CATEGORIA INFORMACIÓN) */
     font-size: clamp(12px, 3cqw, 24px);
     width: 100%;
 }
 
-.categoryDiv section { /* (LA BARRA INFERIOR DE LA CATEGORIA) */
-    background-color: rgba(7, 7, 8, 0.83);
-    height: 40px;
+.categoryDiv section {
+    /* (LA BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(17, 20, 33, 0.5);
+    backdrop-filter: blur(8px);
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-radius: 10px;
 }
 
-.categoryDiv section div { /* (TODO DIV DENTRO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+.categoryDiv section div {
+    /* (TODO DIV DENTRO DE LA BARRA INFERIOR DE LA CATEGORIA) */
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.categoryDiv section #L { /* (DIV IZQUIERDO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+.categoryDiv section #L {
+    /* (DIV IZQUIERDO DE LA BARRA INFERIOR DE LA CATEGORIA) */
     justify-content: left;
 }
 
-.categoryDiv section #R { /* (DIV DERECHO DE LA BARRA INFERIOR DE LA CATEGORIA) */
+.categoryDiv section #R {
+    /* (DIV DERECHO DE LA BARRA INFERIOR DE LA CATEGORIA) */
     justify-content: right;
 }
 
-.categoryDiv section p { /* (TODO P DE LA BARRA INFERIOR DE LA CATEGORIA) */
-    background-color: rgba(49, 48, 54, 0.521);
+.categoryDiv section p {
+    /* (TODO P DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(17, 20, 33, 0.85);
     align-items: center;
     padding: 10px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: bold;
 }
 
-.categoryDiv section section { /* (SECTION DECORATIVO DE BOTONES EN BARRA INFERIOR DE LA CATEGORIA) */
-    background-color: rgba(49, 48, 54, 0.521);
+.categoryDiv section section {
+    /* (SECTION DECORATIVO DE BOTONES EN BARRA INFERIOR DE LA CATEGORIA) */
+    background-color: rgba(17, 20, 33, 0.85);
     width: auto;
     padding: 0px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     gap: 3px;
 }
 
-.categoryDiv section div section button { /* (BOTON DE LA BARRA INFERIOR DE LA CATEGORIA) */
-    color: white;
+.categoryDiv section div section button {
+    /* (BOTON DE LA BARRA INFERIOR DE LA CATEGORIA) */
+    color: inherit;
     transition: color 0.5s ease;
     background: none;
     border: none;
@@ -649,8 +735,18 @@ main {
     cursor: pointer;
 }
 
-.categoryDiv section div section button:hover { /* (AL TOCAR EL BOTON DE LA BARRA INFERIOR DE LA CATEGORIA) */
-    color: rgb(200, 200, 200);
+.btn-volver {
+    color: inherit;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background-color: rgba(17, 20, 33, 0.85);
+    justify-content: flex-end;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 10px;
+    height: auto;
+    cursor: pointer;
 }
 
 /* << FOOTER >> */
@@ -672,4 +768,45 @@ footer div {
 
 footer div p {
     font-size: 0.9rem;
+}
+
+
+@media (max-width: 600px) {
+    .boton-menu {
+        display: flex;
+    }
+
+    .ocultable {
+        display: none;
+    }
+
+    .categoria-contenido {
+        width: 80%;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .categoria-contenido a {
+        width: 100%;
+    }
+
+    .categoria-contenido a:hover {
+        width: 600px;
+    }
+
+    .noticias {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .articulo-contenedor {
+        width: 100%;
+        aspect-ratio: 0;
+    }
+
+    .articulo-imagen {
+        width: 100%;
+    }
+
 }
