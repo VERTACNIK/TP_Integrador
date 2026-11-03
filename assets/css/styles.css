@@ -17,7 +17,7 @@ a:hover, .categoryDiv section div section button:hover, .btn-volver:hover, .boto
     transition: 0.2s ease;
 }
 
-.boton-menu:hover, .btn-volver:hover {
+.boton-menu:hover, .btn-volver:hover, .noticia-imagen:hover {
     box-shadow: 0 0 10px rgb(252, 252, 179);
     transition: 0.2s ease;
 }
@@ -428,6 +428,12 @@ main {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
+.noticia-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .articulo-link {
     display: flex;
     flex-direction: row;
@@ -445,7 +451,6 @@ main {
 .noticia-imagen {
     width: 140px;
     height: 140px;
-    border: 1px solid rgb(204, 204, 204);
     object-fit: cover;
     border-radius: 10px;
     flex-shrink: 0;

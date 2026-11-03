@@ -563,6 +563,15 @@ if (rutaActual.endsWith("noticias.html")) {
 
 }
 
+if (rutaActual.includes("noticia_")) {
+    const tituloNoticia = document.querySelector("h1");
+    const tituloPagina = document.querySelector("title");
+
+    if (tituloNoticia && tituloPagina) {
+        tituloPagina.textContent = `${tituloNoticia.textContent}`;
+    }
+}
+
 // fin script noticias
 
 // script de categoria
